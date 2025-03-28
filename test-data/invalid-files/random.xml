@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is an intentionally invalid XRechnung document for testing purposes -->
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
+         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</cbc:CustomizationID>
+  <cbc:ID>INVOICE-123</cbc:ID>
+  <cbc:IssueDate>2023-05-15</cbc:IssueDate>
+  <!-- Missing required elements -->
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  
+  <!-- Invalid supplier party structure -->
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <!-- Missing required legal entity information -->
+      <cac:PostalAddress>
+        <cbc:StreetName>Supplier Street</cbc:StreetName>
+        <cbc:CityName>Supplier City</cbc:CityName>
+        <!-- Missing required country code -->
+      </cac:PostalAddress>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  
+  <!-- Invalid customer party - missing required elements -->
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <!-- No identification or postal address -->
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  
+  <!-- Invalid tax information -->
+  <cac:TaxTotal>
+    <!-- Missing required tax amount -->
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">100.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">19.00</cbc:TaxAmount>
+      <!-- Invalid tax category -->
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <!-- Missing tax percentage -->
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  
+  <!-- Invalid legal monetary total -->
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="EUR">100.00</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxExclusiveAmount>
+    <!-- Inconsistent amounts -->
+    <cbc:TaxInclusiveAmount currencyID="EUR">150.00</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="EUR">150.00</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  
+  <!-- Invalid invoice line -->
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity>1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">100.00</cbc:LineExtensionAmount>
+    <!-- Missing required item information -->
+    <cac:Item>
+      <!-- Missing name -->
+    </cac:Item>
+    <!-- Missing price information -->
+  </cac:InvoiceLine>
+</Invoice>

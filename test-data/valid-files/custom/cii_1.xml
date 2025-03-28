@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice 
+xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" 
+xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" 
+xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+    </ram:GuidelineSpecifiedDocumentContextParameter>
+  </rsm:ExchangedDocumentContext>
+  <rsm:ExchangedDocument>
+    <ram:ID>INV-2024-001</ram:ID>
+    <ram:TypeCode>380</ram:TypeCode>
+    <ram:IssueDateTime>
+      <udt:DateTimeString format="102">20240924</udt:DateTimeString>
+    </ram:IssueDateTime>
+    <ram:IncludedNote>
+      <ram:Content>Company Name GmbH
+Street Address 123
+12345 City
+Country
+Managing Director: John Doe
+Commercial Register / Registration Number: District Court City HRB 12345</ram:Content>
+      <ram:SubjectCode>REG</ram:SubjectCode>
+    </ram:IncludedNote>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>1</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:SellerAssignedID>P001</ram:SellerAssignedID>
+        <ram:Name>Software Development</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>99.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">10</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>990.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>2</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:SellerAssignedID>P002</ram:SellerAssignedID>
+        <ram:Name>Software Consulting</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>88.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">12</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>1056.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:ApplicableHeaderTradeAgreement>
+      <ram:BuyerReference>REF001</ram:BuyerReference>
+      <ram:SellerTradeParty>
+        <ram:ID>SELLER001</ram:ID>
+        <ram:Name>Company Name GmbH</ram:Name>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>John Doe</ram:PersonName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>+491234567890</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>contact@company.com</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>12345</ram:PostcodeCode>
+          <ram:LineOne>Street Address 123</ram:LineOne>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">contact@company.com</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="FC">123/456/78901</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">DE123456789</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:SellerTradeParty>
+      <ram:BuyerTradeParty>
+        <ram:ID>BUYER001</ram:ID>
+        <ram:Name>Customer Company GmbH</ram:Name>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Jane Smith</ram:PersonName>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>contact@customer.com</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>54321</ram:PostcodeCode>
+          <ram:LineOne>Customer Street 456</ram:LineOne>
+          <ram:CityName>Customer City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">contact@customer.com</ram:URIID>
+        </ram:URIUniversalCommunication>
+      </ram:BuyerTradeParty>
+    </ram:ApplicableHeaderTradeAgreement>
+    <ram:ApplicableHeaderTradeDelivery>
+      <ram:ActualDeliverySupplyChainEvent>
+        <ram:OccurrenceDateTime>
+          <udt:DateTimeString format="102">20240924</udt:DateTimeString>
+        </ram:OccurrenceDateTime>
+      </ram:ActualDeliverySupplyChainEvent>
+    </ram:ApplicableHeaderTradeDelivery>
+    <ram:ApplicableHeaderTradeSettlement>
+      <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+      <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>58</ram:TypeCode>
+        <ram:PayeePartyCreditorFinancialAccount>
+          <ram:IBANID>DE12345678901234567890</ram:IBANID>
+          <ram:AccountName>Company Name GmbH</ram:AccountName>
+        </ram:PayeePartyCreditorFinancialAccount>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>388.74</ram:CalculatedAmount>
+        <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:BasisAmount>2046.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+        <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+      </ram:ApplicableTradeTax>
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:Description>Due date: 08.10.2024</ram:Description>
+        <ram:DueDateDateTime>
+          <udt:DateTimeString format="102">20241008</udt:DateTimeString>
+        </ram:DueDateDateTime>
+      </ram:SpecifiedTradePaymentTerms>
+      <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        <ram:LineTotalAmount>2046.00</ram:LineTotalAmount>
+        <ram:ChargeTotalAmount>0.00</ram:ChargeTotalAmount>
+        <ram:AllowanceTotalAmount>0.00</ram:AllowanceTotalAmount>
+        <ram:TaxBasisTotalAmount>2046.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">388.74</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>2434.74</ram:GrandTotalAmount>
+        <ram:TotalPrepaidAmount>0.00</ram:TotalPrepaidAmount>
+        <ram:DuePayableAmount>2434.74</ram:DuePayableAmount>
+      </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+    </ram:ApplicableHeaderTradeSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
