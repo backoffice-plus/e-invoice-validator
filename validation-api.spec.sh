@@ -1,6 +1,6 @@
 #!/bin/bash
 
-API_URL="http://localhost:3010"  # Updated endpoint
+API_URL="http://localhost:8080"  # Updated endpoint
 VERBOSE=false
 
 # Accepted file report needs to contain one of the following recommendation texts

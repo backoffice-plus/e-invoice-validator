@@ -10,40 +10,92 @@ validation service, conveniently delivered as a Docker container tailored specif
 This project leverages the official [KoSIT validator](https://github.com/itplr-kosit/validator) and includes multiple 
 configurations to cover the range of all needed invoicing scenarios.
 
-## Building for Local Development
-
-For local development, you can use the Docker Compose file which builds the container from source instead of 
-using the pre-built image:
+## Usage
 
 ```bash
-docker-compose up -d
+    docker run -p8080:80 backofficeplus/e-invoice-validator:latest
 ```
 
-This will build the image locally using the Dockerfile in the current directory 
-and start the validator service. As with the production setup, the validator 
-API will be available at http://localhost:3010/
+### Access the HTTP interface
 
+The validation service listens to `POST`-requests on any server URL. You need to supply the xml/object to validate in the HTTP body.
+The last segment of the request URI is treated as the name of the input. E.g. requests to `/myfile.xml`, `/mypath/myfile.xml` and `/mypath/myfile.xml?someParam=1`
+would all result in an input named `myfile.xml`. If you don't specify a specific request URI (e.g. POST to `/`), the name is auto generated for you.
 
-## Validating Documents
+The service expects a single XML input in the HTTP body, e.g. `multipart/form-data` is NOT supported.
 
-You can validate XRechnung and Factur-X XML-Documents using the API endpoint. 
+Examples:
 
-Please note that if your Factur-X document is embedded in an PDF-File, you need to extract the xml file first from the PDF file. 
-*This API does not support PDF-Files.*
-
-```bash
-curl -X POST -H "Content-Type: application/xml" --data-binary @invoice.xml http://localhost:3010/
+* `cURL`
+```shell script
+curl --location --request POST 'http://localhost:8080' \
+--header 'Content-Type: application/xml' \
+--data-binary '@/target.xml'
 ```
 
-### API Response Format
+* `java` (Apache HttpClient)
+```java
+HttpClient httpClient = HttpClientBuilder.create().build();
+HttpPost postRequest = new HttpPost("http://localhost:8080/");
+FileEntity entity = new FileEntity(Paths.get("some.xml").toFile(), ContentType.APPLICATION_XML);
+postRequest.setEntity(entity);
+HttpResponse response = httpClient.execute(postRequest);
+System.out.println(IOUtils.toString(response.getEntity().getContent()));
+```
 
-The API returns:
-- Status code 200 for valid documents with recommendation to accept
-- Status code 406 for invalid documents that should be rejected
+* `javascript`
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/xml");
 
-For valid documents, the response contains one of these recommendation texts:
-- "Bewertung: Es wird empfohlen das Dokument anzunehmen und weiter zu verarbeiten."
-- "Bewertung: Es wird empfohlen das Dokument anzunehmen und zu verarbeiten, da die vorhandenen Fehler derzeit toleriert werden."
+var file = "<file contents here>";
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: file,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:8080", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+* `PHP` (Symfony HttpClient)
+```php
+$httpClient = HttpClient::create();
+
+$response = $httpClient->request('POST', 'http://localhost:8080', [
+  'headers' => [
+    'Content-Type' => 'application/xml',
+  ],
+  'body' => fopen('/path/to/some.xml', 'r'),
+]);
+
+echo $response->getContent();
+
+```
+
+### Status codes
+| code | description |
+|-|-|
+| 200  | The xml file is acceptable according to the scenario configurations |
+| 400 | Bad request. the request contains errors, e.g. no content supplied  |
+| 405 | Method not allowed. Thec check service is only answering on POST requests |
+| 406 | The xml file is NOT acceptable according to the scenario configurations| 
+| 422 | Unprocessable entity. Indicates an error while processing the xml file. This hints to errors in the scenario configuration |
+| 500 | Internal server error. Something went wrong |
+
+### Authorization
+
+There is no mechanism to check, whether client is allowed to consume the service or not. The user is responsible to secure access to the service.
+This can be done using infrastructural service like a forwarding proxies (e.g. `nginx` or `Apache http server`) or by implementing a custom solution.
+
+### Monitoring and administration
+
+The validation service can be integrated in monitoring solutions like `Icinga` or `Nagios`. There is a `health` endpoint exposed under `/server/health` wich returns some basic information about the service like memory consumption, general information about the version and a status `UP` as an XML file.
 
 ## Validator Test Suite
 
