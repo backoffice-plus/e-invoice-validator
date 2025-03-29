@@ -12,7 +12,7 @@ and easy accessibility for small to medium-sized enterprises (SMEs).
 
 ## Profiles Supported:
 
-![Factur-X Profiles](docs/factur-x profiles.png)
+![Factur-X Profiles](/docs/factur-x profiles.png)
 
 - **MINIMUM**: Basic information only (not valid as a full invoice under certain legal contexts)
 - **BASIC WL**: Header and footer information without line items
