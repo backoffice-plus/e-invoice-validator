@@ -44,7 +44,7 @@ For valid documents, the response contains one of these recommendation texts:
 - "Bewertung: Es wird empfohlen das Dokument anzunehmen und weiter zu verarbeiten."
 - "Bewertung: Es wird empfohlen das Dokument anzunehmen und zu verarbeiten, da die vorhandenen Fehler derzeit toleriert werden."
 
-# Validator Test Suite
+## Validator Test Suite
 
 This directory includes a bash test script to validate multiple XML files against the validator API.
 
@@ -54,7 +54,7 @@ and example files from [FeRD](https://www.ferd-net.de/)
 - Valid XML files are placed in `test-data/valid-files/`
 - Invalid XML files are placed in `test-data/invalid-files/`
 
-## Running Tests
+### Running Tests
 
 Run the test script:
 
@@ -73,18 +73,18 @@ The script will:
 3. Check if the validation results match expectations
 4. Display a summary of test results
 
-## Test Script Behavior
+### Test Script Behavior
 
 The script validates files with the following criteria:
 - Valid files should return status code 200 and contain an acceptance recommendation
 - Invalid files should return status code 406
 
-## Exit Codes
+### Exit Codes
 
 - `0`: All tests passed successfully
 - `1`: Some tests failed (validation results didn't match expectations)
 
-## Notes
+### Notes
 
 - The test script assumes the validator API is available at `http://localhost:3010/`
 - Files in `valid-files/` are expected to be valid XRechnung documents
