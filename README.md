@@ -78,7 +78,7 @@ echo $response->getContent();
 
 ```
 
-### Status codes
+#### Status codes
 | code | description |
 |-|-|
 | 200  | The xml file is acceptable according to the scenario configurations |
@@ -88,12 +88,12 @@ echo $response->getContent();
 | 422 | Unprocessable entity. Indicates an error while processing the xml file. This hints to errors in the scenario configuration |
 | 500 | Internal server error. Something went wrong |
 
-### Authorization
+#### Authorization
 
 There is no mechanism to check, whether client is allowed to consume the service or not. The user is responsible to secure access to the service.
 This can be done using infrastructural service like a forwarding proxies (e.g. `nginx` or `Apache http server`) or by implementing a custom solution.
 
-### Monitoring and administration
+#### Monitoring and administration
 
 The validation service can be integrated in monitoring solutions like `Icinga` or `Nagios`. There is a `health` endpoint exposed under `/server/health` wich returns some basic information about the service like memory consumption, general information about the version and a status `UP` as an XML file.
 
