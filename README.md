@@ -309,6 +309,6 @@ Contributors:
 
 - [Karl Adler](https://www.linkedin.com/in/karl-adler-dev/), [Fudler IT-Solutions](https://fudler.de/)
 
-- [Julian Haupt](https://www.linkedin.com/in/julian-haupt-047a853a/), [backoffice.plus](https://backoffice.plus/s)
+- [Julian Haupt](https://www.linkedin.com/in/julian-haupt-047a853a/), [backoffice.plus](https://backoffice.plus/)
 
 ------------------------------------------------------------
