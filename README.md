@@ -48,7 +48,7 @@ For valid documents, the response contains one of these recommendation texts:
 
 This directory includes a bash test script to validate multiple XML files against the validator API.
 
-The current files are a set composed of [official XRechnung test corpus from KoSIT.](https://github.com/itplr-kosit/xrechnung-testsuite/releases?page=1)
+The current files are a set composed of [official XRechnung test corpus from KoSIT](https://github.com/itplr-kosit/xrechnung-testsuite/releases?page=1)
 and example files from [FeRD](https://www.ferd-net.de/)
 
 - Valid XML files are placed in `test-data/valid-files/`
@@ -172,31 +172,46 @@ provided by FNFE-MPE (French team) and [FeRD](https://www.ferd-net.de/) (German 
 
 ### XRechnung
 
-**XRechnung** is an XML-based semantic data model established as the standard for electronic invoices in Germany, particularly for transactions with public sector entities.
+XRechnung is an XML-based e-invoicing format that serves as the official standard for electronic invoices in Germany, 
+particularly in transactions with public sector entities. It is fully compliant with the European Norm EN 16931, 
+ensuring semantic consistency and interoperability across EU member states.
+
+It supports two different syntaxes: UBL (Universal Business Language) and CII (Cross Industry Invoice) which represent the same semantic model.
 
 #### Key Features
 
-- **Compliance**: Aligns with the European Norm EN 16931, ensuring interoperability across EU member states.
-- **Standardization**: Serves as Germany's Core Invoice Usage Specification (CIUS), detailing national requirements for electronic invoicing.
-- **Machine-Readable**: Facilitates automated processing by representing invoice data in a structured XML format.
+- **Standards-Compliant**: Conforms to EN 16931 and the German CIUS (Core Invoice Usage Specification).
+- **Dual Syntax Support**: Available in two XML syntaxes:
+  - UBL (Universal Business Language)
+  - CII (Cross Industry Invoice)
+- **Machine-Readable**: Optimized for automated processing with structured XML data.
 
-#### Implementation in Germany
+#### Use in B2G (Business-to-Government)
 
-- **Legal Mandate**: Suppliers to federal public authorities are required to submit invoices electronically using the XRechnung standard.
-- **Transmission Portals**: Invoices are submitted through centralized platforms like the Zentrale Rechnungseingangsplattform des Bundes (ZRE) and the OZG-konforme Rechnungseingangsplattform (OZG-RE).
+- **Legal Requirement**: Electronic invoicing using XRechnung is mandatory for suppliers to federal public authorities.
+- **Submission Portals**
+  - Zentrale Rechnungseingangsplattform des Bundes
+  - OZG-RE – OZG-konforme Rechnungseingangsplattform der Länder und Kommunen
 
-#### Technical Specifications
+#### Use in B2B (Business-to-Business)
 
-- **Data Format**: Utilizes XML to encode invoice information, ensuring machine processability.
-- **Profiles**: Supports various profiles, including 'Minimum', 'Basic WL', 'Basic', 'EN 16931', 'Extended', and 'XRechnung', 
-each catering to different levels of invoice complexity and compliance requirements. 
+While XRechnung is primarily intended for B2G (Business-to-Government), the underlying EN 16931 standard is equally
+applicable to B2B transactions. The format can be adopted voluntarily in B2B contexts where:
 
-#### Integration with Other Standards
+- Interoperability with EU partners is desired
+- Automation and machine-readability of invoice data are important
+- Compliance with PEPPOL or other cross-border standards is required
 
-- **ZUGFeRD Compatibility**: Since ZUGFeRD profile version 2.2.0 'XRECHNUNG' can be combined into human-readable
-  PDF/A-3 documents.
+Many companies in regulated sectors (e.g., utilities, healthcare) are already adopting EN 16931-compliant invoices for B2B workflows.
+
+#### ZUGFeRD Compatibility
+
+Since version 2.2.0, the ZUGFeRD profile “XRECHNUNG” enables combining XRechnung-compliant XML with a human-readable 
+PDF/A-3 container (Factur-X style). This hybrid approach is useful for B2B scenarios where a visual invoice is still expected.
 
 ## Versions Suported
+
+The validator supports the following validation sets from the [KoSIT XRechnung Configurations](https://github.com/itplr-kosit/validator-configuration-xrechnung) repository:
 
 - 2.0.1 (2020-12-31)
 - 2.1.1 (2021-11-15)
@@ -206,9 +221,8 @@ each catering to different levels of invoice complexity and compliance requireme
 
 #### Further information
 
-- The [Coordination Office for IT Standards (KoSIT)](https://www.xoev.de/) provides the XRechnung specification and related resources.
-- For comprehensive information and updates, visit the official [E-Rechnung-Bund website](https://www.e-rechnung-bund.de).
-
+- KoSIT – Official specification & tools: [xoev.de](https://www.xoev.de/)
+- E-Rechnung Bund – Government e-invoicing portal: [e-rechnung-bund.de](https://www.e-rechnung-bund.de)
 
 ### Creating new scenario configurations
 
