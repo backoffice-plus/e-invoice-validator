@@ -27,7 +27,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=3s --retries=10 \
   CMD curl -fsS http://127.0.0.1:80/server/health | grep -q "<ns2:status>UP</ns2:status>"
 
 CMD ["java", "-jar", "validationtool-standalone.jar",\
-"-s", "configuration/zugferd/2.32/scenarios.xml", "-r", "configuration/zugferd/2.32",\
+"-s", "configuration/factur-x/1.07.2/scenarios.xml", "-r", "configuration/factur-x/1.07.2",\
 "-s", "configuration/xrechnung/2.3.1_2023-05-12/scenarios.xml", "-r", "configuration/xrechnung/2.3.1_2023-05-12",\
 "-s", "configuration/xrechnung/2.2.0_2022-11-15/scenarios.xml", "-r", "configuration/xrechnung/2.2.0_2022-11-15",\
 "-s", "configuration/xrechnung/2.1.1_2021-11-15/scenarios.xml", "-r", "configuration/xrechnung/2.1.1_2021-11-15",\
