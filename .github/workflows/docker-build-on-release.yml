@@ -26,11 +26,12 @@ jobs:
         run: |
           echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
-      - name: Build and push Docker image with release tag
+      - name: Build and push Docker image with release tag (multi-arch)
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64/v8
           tags: backofficeplus/e-invoice-validator:${{ steps.extract_tag.outputs.tag }}
 
       - name: Check if release is not a prerelease
@@ -42,10 +43,11 @@ jobs:
             echo "set_latest=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Tag and push latest image if not a prerelease
+      - name: Tag and push latest image if not a prerelease (multi-arch)
         if: steps.is_latest.outputs.set_latest == 'true'
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64/v8
           tags: backofficeplus/e-invoice-validator:latest
