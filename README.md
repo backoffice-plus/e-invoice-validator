@@ -1,12 +1,13 @@
-# E-Invoice Validator
+# E-Invoice Validator for Germany
+
+> [!Disclaimer]
+> This tool and the information provided are offered as-is, without any guarantees or warranties. While we strive for accuracy,
+>  we highly recommend verifying compliance and correctness using official documentation and sources. 
 
 We have gathered all relevant information and packaged it into an easy-to-use, preconfigured e-invoice 
 validation service, conveniently delivered as a Docker container tailored specifically for use in Germany.
 
-**Disclaimer**: This tool is provided as-is, without any guarantees or warranties. We strongly recommend
-verifying compliance and accuracy independently through official sources.
-
-This container leverages the official [KoSIT validator](https://github.com/itplr-kosit/validator) and includes multiple 
+This project leverages the official [KoSIT validator](https://github.com/itplr-kosit/validator) and includes multiple 
 configurations to cover the range of all needed invoicing scenarios.
 
 ## Building for Local Development
@@ -156,7 +157,7 @@ refer to the same data structure. To emphasize its international character, this
 
 #### Profiles Supported:
 
-![Factur-X Profiles](docs/factur-x-profiles.png)
+![Factur-X Profiles](images/factur-x-profiles.png)
 
 - **MINIMUM**: Basic information only (not valid as a full invoice)
 - **BASIC WL**: Header and footer information without line items (not valid as a full invoice)
@@ -209,7 +210,7 @@ Many companies in regulated sectors (e.g., utilities, healthcare) are already ad
 Since version 2.2.0, the ZUGFeRD profile “XRECHNUNG” enables combining XRechnung-compliant XML with a human-readable 
 PDF/A-3 container (Factur-X style). This hybrid approach is useful for B2B scenarios where a visual invoice is still expected.
 
-## Versions Suported
+#### Versions Suported
 
 The validator supports the following validation sets from the [KoSIT XRechnung Configurations](https://github.com/itplr-kosit/validator-configuration-xrechnung) repository:
 
@@ -292,3 +293,22 @@ Example:
   </resource>
 </createReport>
 ```
+
+------------------------------------------------------------
+
+That's it. Have a happy e-invoice validation experience and focus on what really matters: solving the core problems
+of your customers.
+
+Brought to you by:
+
+![backoffice.plus](images/backoffice.plus.png "https://backoffice.plus/")
+
+[backoffice.plus](https://backoffice.plus/) 🚀 Digital Transformation & Automation
+
+Contributors:
+
+- [Karl Adler](https://www.linkedin.com/in/karl-adler-dev/), [Fudler IT-Solutions](https://fudler.de/)
+
+- [Julian Haupt](https://www.linkedin.com/in/julian-haupt-047a853a/), [backoffice.plus](https://backoffice.plus/s)
+
+------------------------------------------------------------
