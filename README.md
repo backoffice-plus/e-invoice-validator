@@ -90,26 +90,76 @@ The script validates files with the following criteria:
 - Files in `valid-files/` are expected to be valid XRechnung documents
 - Files in `invalid-files/` are expected to be rejected
 
-## Supported scenarios
+## Preconfigured scenarios and profiles for use in Germany
 
-### Factur-X 1.07.2 (ZUGFeRD 2.3.2)
+### XRechnung 2.0
+
+* XRechnung 2.0.1 - EN16931 XRechnung (UBL Invoice)
+* XRechnung 2.0.1 - EN16931 XRechnung Extension (UBL Invoice)
+* XRechnung 2.0.1 - EN16931 XRechnung (UBL CreditNote)
+* XRechnung 2.0.1 - EN16931 XRechnung (CII)
+
+### XRechnung 2.1
+
+* XRechnung 2.1.1 - EN16931 XRechnung (UBL Invoice)
+* XRechnung 2.1.1 - EN16931 XRechnung Extension (UBL Invoice)
+* XRechnung 2.1.1 - EN16931 XRechnung (UBL CreditNote)
+* XRechnung 2.1.1 - EN16931 XRechnung (CII)
+
+### XRechnung 2.2
+
+* XRechnung 2.2.0 - EN16931 XRechnung (UBL Invoice)
+* XRechnung 2.2.0 - EN16931 XRechnung Extension (UBL Invoice)
+* XRechnung 2.2.0 - EN16931 XRechnung (UBL CreditNote)
+* XRechnung 2.2.0 - EN16931 XRechnung (CII)
+* XRechnung 2.2.0 - EN16931 XRechnung Extension (CII)
+
+### XRechnung 2.3
+
+* XRechnung 2.3.1 - EN16931 XRechnung (UBL Invoice)
+* XRechnung 2.3.1 - EN16931 XRechnung Extension (UBL Invoice)
+* XRechnung 2.3.1 - EN16931 XRechnung (UBL CreditNote)
+* XRechnung 2.3.1 - EN16931 XRechnung (CII)
+* XRechnung 2.3.1 - EN16931 XRechnung Extension (CII)
+
+### XRechnung 3.0
+
+* XRechnung 3.0.2 - EN16931 XRechnung (UBL Invoice)
+* XRechnung 3.0.2 - EN16931 XRechnung Extension (UBL Invoice)
+* XRechnung 3.0.2 - EN16931 XRechnung (UBL CreditNote)
+* XRechnung 3.0.2 - EN16931 XRechnung (CII)
+* XRechnung 3.0.2 - EN16931 XRechnung Extension (CII)
+
+### ZUGFeRD 2.3 / Factur-X 1.07
+
+* ZUGFeRD 2.3.2/Factur-X 1.07.2 - EN16931 (CII) Extended
+* ZUGFeRD 2.3.2/Factur-X 1.07.2 - Basic
+* ZUGFeRD 2.3.2/Factur-X 1.07.2 - Comfort (EN16931)
+
+## Detailed information about supported standards
+
+### Factur-X (ZUGFeRD)
 
 **Factur-X** is a hybrid electronic invoice format developed by a French-German consortium, combining human-readable
-PDF/A-3 documents with embedded XML data. It complies with the European Norm EN 16931, facilitating automated processing
+PDF/A-3 documents with an embedded XML file. It complies with the European Norm EN 16931, facilitating automated processing
 and easy accessibility for small to medium-sized enterprises (SMEs).
 
+The hybrid format originally introduced in Germany as “ZUGFeRD” is technically identical to “Factur-X” — both terms 
+refer to the same data structure. To emphasize its international character, this project consistently uses the term
+“Factur-X”, even when referring to what was formerly known as ZUGFeRD.
+
 #### Key Features:
-- **Hybrid Format**: PDF with embedded XML (UN/CEFACT CII D22B XML standard)
+- **Hybrid Format**: PDF with embedded XML
 - Human and machine-readable
-- Compliant with EU Directive 2014/55/EU
+- Full compliance with EN 16931 requirements (exceptions: Profiles "Minimum" and "Basic WL" are not compliant)
 - Designed for easy adoption by SMEs
 
 #### Profiles Supported:
 
 ![Factur-X Profiles](docs/factur-x-profiles.png)
 
-- **MINIMUM**: Basic information only (not valid as a full invoice under certain legal contexts)
-- **BASIC WL**: Header and footer information without line items
+- **MINIMUM**: Basic information only (not valid as a full invoice)
+- **BASIC WL**: Header and footer information without line items (not valid as a full invoice)
 - **BASIC**: Full compliance with EN 16931 requirements, including line items
 - **EN 16931**: Complete European semantic standard
 - **EXTENDED**: Additional fields for complex business cases, including French CTC compliance
@@ -137,7 +187,7 @@ provided by FNFE-MPE (French team) and [FeRD](https://www.ferd-net.de/) (German 
 
 #### Technical Specifications
 
-- **Data Format**: Utilizes XML to encode invoice information, ensuring both human readability and machine processability.
+- **Data Format**: Utilizes XML to encode invoice information, ensuring machine processability.
 - **Profiles**: Supports various profiles, including 'Minimum', 'Basic WL', 'Basic', 'EN 16931', 'Extended', and 'XRechnung', 
 each catering to different levels of invoice complexity and compliance requirements. 
 
