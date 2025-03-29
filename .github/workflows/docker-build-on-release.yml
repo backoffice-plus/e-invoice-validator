@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -31,7 +34,7 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64
           tags: backofficeplus/e-invoice-validator:${{ steps.extract_tag.outputs.tag }}
 
       - name: Check if release is not a prerelease
@@ -49,5 +52,5 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64
           tags: backofficeplus/e-invoice-validator:latest
