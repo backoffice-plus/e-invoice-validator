@@ -1,6 +1,6 @@
 # E-Invoice Validator for Germany
 
-> [!Disclaimer]
+> [!IMPORTANT]
 > This tool and the information provided are offered as-is, without any guarantees or warranties. While we strive for accuracy,
 >  we highly recommend verifying compliance and correctness using official documentation and sources. 
 
