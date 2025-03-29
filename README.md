@@ -13,7 +13,7 @@ configurations to cover the range of all needed invoicing scenarios.
 ## Usage
 
 ```bash
-    docker run -p8080:80 backofficeplus/e-invoice-validator:latest
+docker run -p8080:80 backofficeplus/e-invoice-validator:latest
 ```
 
 ### Access the HTTP interface
