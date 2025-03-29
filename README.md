@@ -354,7 +354,7 @@ of your customers.
 Brought to you by:
 
 <a href="https://backoffice.plus/">
-  <img src="images/backoffice.plus.png" alt="backoffice.plus logo" style="max-width: 400px;">
+  <img src="images/backoffice.plus.png" alt="backoffice.plus logo" style="max-width: 120px;">
 </a>
 
 [backoffice.plus](https://backoffice.plus/) 🚀 Digital Transformation & Automation
