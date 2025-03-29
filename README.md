@@ -26,14 +26,16 @@ The service expects a single XML input in the HTTP body, e.g. `multipart/form-da
 
 Examples:
 
-* `cURL`
+#### cURL
+
 ```shell script
 curl --location --request POST 'http://localhost:8080' \
 --header 'Content-Type: application/xml' \
 --data-binary '@/target.xml'
 ```
 
-* `java` (Apache HttpClient)
+#### Java (Apache HttpClient)
+
 ```java
 HttpClient httpClient = HttpClientBuilder.create().build();
 HttpPost postRequest = new HttpPost("http://localhost:8080/");
@@ -43,7 +45,8 @@ HttpResponse response = httpClient.execute(postRequest);
 System.out.println(IOUtils.toString(response.getEntity().getContent()));
 ```
 
-* `javascript`
+#### JavaScript
+
 ```javascript
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/xml");
@@ -63,7 +66,8 @@ fetch("http://localhost:8080", requestOptions)
   .catch(error => console.log('error', error));
 ```
 
-* `PHP` (Symfony HttpClient)
+#### PHP (Symfony HttpClient)
+
 ```php
 $httpClient = HttpClient::create();
 
