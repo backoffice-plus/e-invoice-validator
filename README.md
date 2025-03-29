@@ -139,7 +139,7 @@ The script validates files with the following criteria:
 
 ### Notes
 
-- The test script assumes the validator API is available at `http://localhost:3010/`
+- The test script assumes the validator API is available at `http://localhost:8080/`
 - Files in `valid-files/` are expected to be valid XRechnung documents
 - Files in `invalid-files/` are expected to be rejected
 
@@ -354,7 +354,7 @@ of your customers.
 Brought to you by:
 
 <a href="https://backoffice.plus/">
-  <img src="images/backoffice.plus.png" alt="backoffice.plus logo" style="max-width: 120px;">
+  <img src="images/backoffice.plus.png" alt="backoffice.plus logo" style="width: 120px; max-width: 120px;">
 </a>
 
 [backoffice.plus](https://backoffice.plus/) 🚀 Digital Transformation & Automation
