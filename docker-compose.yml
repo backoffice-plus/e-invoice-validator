@@ -1,0 +1,7 @@
+services:
+  e-invoice-validator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3010:80"
