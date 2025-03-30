@@ -4,11 +4,30 @@
 > This tool and the information provided are offered as-is, without any guarantees or warranties. While we strive for accuracy,
 >  we highly recommend verifying compliance and correctness using official documentation and sources. 
 
-We have gathered all relevant information and packaged it into an easy-to-use, preconfigured e-invoice 
-validation service, conveniently delivered as a Docker container tailored specifically for use in Germany.
+With the Wachstumschancengesetz (2024), Germany introduced mandatory electronic invoicing for B2B transactions using 
+a phased approach:
 
-This project leverages the official [KoSIT validator](https://github.com/itplr-kosit/validator) and includes multiple 
-configurations to cover the range of all needed invoicing scenarios.
+Effective from **2025-01-01**:
+* Paper invoices no longer take precedence.
+* All businesses may send electronic invoices (in a legally compliant format).
+* All businesses must be able to receive electronic invoices.
+* Other formats (e.g., PDF) may be used if both parties agree.
+
+From **2027-01-01**:
+* Businesses with annual turnover > €800,000 must send electronic invoices.
+* Businesses with turnover ≤ €800,000 may continue using other invoice formats.
+
+From **2028-01-01**
+* All businesses must send electronic invoices.
+* Existing systems must comply with legal requirements.
+
+As a business receiving e-invoices, you are required to validate that each invoice complies with the European standard EN 16931.
+
+This project helps you do exactly that.
+
+We’ve bundled everything you need into a preconfigured, easy-to-use validation service, delivered as a Docker container, specifically tailored for use in Germany.
+
+Under the hood, it uses the official [KoSIT validator](https://github.com/itplr-kosit/validator)  and includes multiple configurations to support all relevant invoicing scenarios.
 
 ## Usage
 
@@ -23,6 +42,9 @@ The last segment of the request URI is treated as the name of the input. E.g. re
 would all result in an input named `myfile.xml`. If you don't specify a specific request URI (e.g. POST to `/`), the name is auto generated for you.
 
 The service expects a single XML input in the HTTP body, e.g. `multipart/form-data` is NOT supported.
+
+**Note**: The API does not accept PDF files.  If your e-invoice is embedded within a PDF (e.g., as a ZUGFeRD/Factur-X 
+or XRechnung attachment), you must extract the XML file before submitting it for validation.
 
 Examples:
 
@@ -108,6 +130,7 @@ This directory includes a bash test script to validate multiple XML files agains
 The current files are a set composed of [official XRechnung test corpus from KoSIT](https://github.com/itplr-kosit/xrechnung-testsuite/releases?page=1)
 and example files from [FeRD](https://www.ferd-net.de/)
 
+- The script assumes the validator API is available at `http://localhost:8080/`
 - Valid XML files are placed in `test-data/valid-files/`
 - Invalid XML files are placed in `test-data/invalid-files/`
 
@@ -140,12 +163,6 @@ The script validates files with the following criteria:
 
 - `0`: All tests passed successfully
 - `1`: Some tests failed (validation results didn't match expectations)
-
-### Notes
-
-- The test script assumes the validator API is available at `http://localhost:8080/`
-- Files in `valid-files/` are expected to be valid XRechnung documents
-- Files in `invalid-files/` are expected to be rejected
 
 ## Preconfigured scenarios and profiles for use in Germany
 
@@ -224,7 +241,7 @@ refer to the same data structure. To emphasize its international character, this
 
 #### Further information
 
-For detailed specifications, validation tools, and additional resources, refer to the comprehensive documentation 
+For detailed specifications and additional resources refer to the comprehensive documentation 
 provided by FNFE-MPE (French team) and [FeRD](https://www.ferd-net.de/) (German team).
 
 ### XRechnung
@@ -278,7 +295,8 @@ The validator supports the following validation sets from the [KoSIT XRechnung C
 
 #### Further information
 
-- KoSIT – Official specification & tools: [xoev.de](https://www.xoev.de/)
+- KoSIT – Official specification & tools: [xoev.de](https://www.xoev.de/) [KoSIT Github Organization](https://github.com/itplr-kosit)
+- [XStandards Einkauf](https://xeinkauf.de/xrechnung/)
 - E-Rechnung Bund – Government e-invoicing portal: [e-rechnung-bund.de](https://www.e-rechnung-bund.de)
 
 ### Creating new scenario configurations
