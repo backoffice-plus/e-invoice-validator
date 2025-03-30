@@ -1,10 +1,10 @@
 # E-Invoice Validator for Germany
 
+![E-Invoice Validator](images/e-invoice.png)
+
 > [!IMPORTANT]
 > This tool and the information provided are offered as-is, without any guarantees or warranties. While we strive for accuracy,
->  we highly recommend verifying compliance and correctness using official documentation and sources. 
-
-![E-Invoice Validator](images/e-invoice.png)
+>  we highly recommend verifying compliance and correctness using official documentation and sources.
 
 With the Wachstumschancengesetz (2024), Germany introduced mandatory electronic invoicing for B2B transactions using 
 a phased approach:
