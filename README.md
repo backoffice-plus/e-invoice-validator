@@ -1,6 +1,8 @@
 # E-Invoice Validator for Germany
 
-![E-Invoice Validator](images/e-invoice.png)
+<p align="center">
+  <img src="images/e-invoice.png" alt="E-Invoice Validator" width="256px">
+</p>
 
 > [!IMPORTANT]
 > This tool and the information provided are offered as-is, without any guarantees or warranties. While we strive for accuracy,
