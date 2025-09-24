@@ -32,5 +32,5 @@ CMD ["java", "-jar", "validationtool-standalone.jar",\
 "-s", "configuration/xrechnung/2.2.0_2022-11-15/scenarios.xml", "-r", "configuration/xrechnung/2.2.0_2022-11-15",\
 "-s", "configuration/xrechnung/2.1.1_2021-11-15/scenarios.xml", "-r", "configuration/xrechnung/2.1.1_2021-11-15",\
 "-s", "configuration/xrechnung/2.0.1_2020-12-31/scenarios.xml", "-r", "configuration/xrechnung/2.0.1_2020-12-31",\
-"-s", "configuration/xrechnung/3.0.2_2024-10-31/scenarios.xml", "-r", "configuration/xrechnung/3.0.2_2024-10-31",\
+"-s", "configuration/xrechnung/3.0.2_2025-03-24/scenarios.xml", "-r", "configuration/xrechnung/3.0.2_2025-03-24",\
 "-D", "-P", "80", "-H", "0.0.0.0", "--disable-gui"]
