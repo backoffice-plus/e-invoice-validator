@@ -295,7 +295,7 @@ The validator supports the following validation sets from the [KoSIT XRechnung C
 - 2.1.1 (2021-11-15)
 - 2.2.0 (2022-11-15)
 - 2.3.1 (2023-05-12)
-- 3.0.2 (2024-10-31)
+- 3.0.2 (2025-03-24)
 
 #### Further information
 
