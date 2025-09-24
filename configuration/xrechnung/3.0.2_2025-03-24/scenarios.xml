@@ -7,17 +7,17 @@
   frameworkVersion="1.0.0">
   <name>Validator Configuration XRechnung 3.0.2</name>
   <author>Coordination Office for IT Standards (KoSIT)</author>
-  <date>2024-11-19</date>
+  <date>2025-03-24</date>
   <description>
     <p>Checks whether XML Documents conform to XRechnung specification
             3.0.2
             (https://xeinkauf.de/xrechnung/versionen-und-bundles/).</p>
     <p>It uses CEN Schematron rules of urn:cen.eu:en16931:2017
-            in version 1.3.12 from 2024-11-19
+            in version 1.3.13 from 2025-03-24
             (https://github.com/ConnectingEurope/eInvoicing-EN16931/releases).</p>
-    <p>It uses Schematron Rules version 2.2.0 for XRechnung specification version
+    <p>It uses Schematron Rules version 2.3.0 for XRechnung specification version
             3.0.2 
-            (https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.2.0/xrechnung-3.0.2-schematron-2.2.0.zip).</p>
+            (https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.3.0/xrechnung-3.0.2-schematron-2.3.0.zip).</p>
   </description>
 
   <!-- XRECHNUNG specific scenarios -->
@@ -29,12 +29,12 @@
       <p>Uses UBL Invoice 2.1 XML Schema,
                 Schematron rules from EN16931:2017, and XRechnung
                 3.0.2 </p>
-      <p>Download of UBL XML Schema on 2024-11-19 from
+      <p>Download of UBL XML Schema on 2025-03-24 from
                 http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.zip</p>
-      <p>Download of UBL Schematron rules on 2024-11-19 from
-                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.12/en16931-ubl-1.3.12.zip</p>
-      <p>Download of XRechnung Schematron rules on 2024-11-19 from
-                https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.2.0/xrechnung-3.0.2-schematron-2.2.0.zip</p>
+      <p>Download of UBL Schematron rules on 2025-03-24 from
+                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.13/en16931-ubl-1.3.13.zip</p>
+      <p>Download of XRechnung Schematron rules on 2025-03-24 from
+                https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.3.0/xrechnung-3.0.2-schematron-2.3.0.zip</p>
     </description>
     <!-- UBL Invoice namespaces -->
     <namespace prefix="cbc"
@@ -87,12 +87,12 @@
       <p>Uses UBL Invoice 2.1 XML Schema,
         Schematron rules from EN16931:2017, and XRechnung
         3.0.2 </p>
-      <p>Download of UBL XML Schema on 2024-11-19 from
+      <p>Download of UBL XML Schema on 2025-03-24 from
         http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.zip</p>
-      <p>Download of UBL Schematron rules on 2024-11-19 from
-        https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.12/en16931-ubl-1.3.12.zip</p>
-      <p>Download of XRechnung Schematron rules on 2024-11-19 from
-        https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.2.0/xrechnung-3.0.2-schematron-2.2.0.zip</p>
+      <p>Download of UBL Schematron rules on 2025-03-24 from
+        https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.13/en16931-ubl-1.3.13.zip</p>
+      <p>Download of XRechnung Schematron rules on 2025-03-24 from
+        https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.3.0/xrechnung-3.0.2-schematron-2.3.0.zip</p>
     </description>
     <!-- UBL Invoice namespaces -->
     <namespace prefix="cbc"
@@ -157,12 +157,12 @@
       <p>Uses UBL CreditNote 2.1 XML Schema, 
                 Schematron rules from EN16931:2017, and XRechnung
                 3.0.2 </p>
-      <p>Download of UBL XML Schema on 2024-11-19 from
+      <p>Download of UBL XML Schema on 2025-03-24 from
                 http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.zip</p>
-      <p>Download of UBL Schematron rules on 2024-11-19 from
-                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.12/en16931-ubl-1.3.12.zip</p>
-      <p>Download of XRechnung Schematron rules on 2024-11-19 from
-                https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.2.0/xrechnung-3.0.2-schematron-2.2.0.zip</p>
+      <p>Download of UBL Schematron rules on 2025-03-24 from
+                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.13/en16931-ubl-1.3.13.zip</p>
+      <p>Download of XRechnung Schematron rules on 2025-03-24 from
+                https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.3.0/xrechnung-3.0.2-schematron-2.3.0.zip</p>
     </description>
     <!-- UBL CrediteNote Namespaces -->
     <namespace prefix="cbc"
@@ -215,12 +215,12 @@
       <p>Uses UN/CEFACT (SCRDM - CII uncoupled) version
                 D16B XML Schema, Schematron rules from EN16931:2017,
                 and XRechnung Schematron rules version 3.0.2 </p>
-      <p>Download of CII uncoupled XML Schema on 2024-11-19 from
+      <p>Download of CII uncoupled XML Schema on 2025-03-24 from
                 https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/xeinkauf/D16B_SCRDM__Subset__CII/D16B/D16B_SCRDM__Subset__CII-D16B.zip</p>
-      <p>Download of CII Schematron rules on 2024-11-19 from
-                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.12/en16931-cii-1.3.12.zip </p>
-      <p>Download of XRechnung Schematron rules on 2024-11-19 from
-                https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.2.0/xrechnung-3.0.2-schematron-2.2.0.zip</p>
+      <p>Download of CII Schematron rules on 2025-03-24 from
+                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.13/en16931-cii-1.3.13.zip </p>
+      <p>Download of XRechnung Schematron rules on 2025-03-24 from
+                https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.3.0/xrechnung-3.0.2-schematron-2.3.0.zip</p>
     </description>
     <!-- CII namespaces -->
     <namespace prefix="rsm"
@@ -279,12 +279,12 @@
       <p>Uses UN/CEFACT (SCRDM - CII uncoupled) version
         D16B XML Schema, Schematron rules from EN16931:2017,
         and XRechnung Schematron rules version 3.0.2 </p>
-      <p>Download of CII uncoupled XML Schema on 2024-11-19 from
+      <p>Download of CII uncoupled XML Schema on 2025-03-24 from
         https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/xeinkauf/D16B_SCRDM__Subset__CII/D16B/D16B_SCRDM__Subset__CII-D16B.zip</p>
-      <p>Download of CII Schematron rules on 2024-11-19 from
-        https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.12/en16931-cii-1.3.12.zip </p>
-      <p>Download of XRechnung Schematron rules on 2024-11-19 from
-        https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.2.0/xrechnung-3.0.2-schematron-2.2.0.zip</p>
+      <p>Download of CII Schematron rules on 2025-03-24 from
+        https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.13/en16931-cii-1.3.13.zip </p>
+      <p>Download of XRechnung Schematron rules on 2025-03-24 from
+        https://github.com/itplr-kosit/xrechnung-schematron/releases/download/release-2.3.0/xrechnung-3.0.2-schematron-2.3.0.zip</p>
     </description>
     <!-- CII namespaces -->
     <namespace prefix="rsm"
@@ -319,7 +319,7 @@
         <name>Validation report for XRechnung</name>
         <location>resources/xrechnung-report.xsl</location>
       </resource>
-      <!-- custom level "information" for BR-CL-01 was removed as construction codes were added to Codelist 1001 with CEN 1.3.8 (see CEN issue https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/309) -->
+      <!-- custom level "information" for BR-CL-01 was removed as construction codes were added to Codelist 1001 with CEN 1.3.8 (see CEN issue https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/309) --> 
       <!-- overwrites CEN severity level "fatal" for codelist values of BT-130 "Invoiced quantity unit of measure code" and BT-150 "Item price base quantity unit of measure code" -->
       <customLevel level="warning">BR-CL-23</customLevel>
       <!-- overwrites CEN severity level "fatal" for ISO 6523 values of BT-157 "Item standard identifier" scheme identifier and to enable DIGA codes (BR-DEX-06) -->
@@ -346,7 +346,6 @@
 
 
    <!-- Match for general CEN rules validation only: WITHOUT XRECHNUNG rules -->
-<!--
   <scenario>
     <name>EN16931 (UBL Invoice)</name>
     <description>
@@ -354,17 +353,17 @@
       <p>Uses UBL Invoice 2.1 XML Schema,
                 Schematron rules from EN16931:2017, and XRechnung
                 3.0.2 </p>
-      <p>Download of UBL XML Schema on 2024-11-19 from
+      <p>Download of UBL XML Schema on 2025-03-24 from
                 http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.zip</p>
-      <p>Download of UBL Schematron rules on 2024-11-19 from
-                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.12/en16931-ubl-1.3.12.zip</p>
+      <p>Download of UBL Schematron rules on 2025-03-24 from
+                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.13/en16931-ubl-1.3.13.zip</p>
     </description>
-    &lt;!&ndash; UBL Invoice namespaces &ndash;&gt;
+    <!-- UBL Invoice namespaces -->
     <namespace prefix="cbc"
       >urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</namespace>
     <namespace prefix="invoice"
       >urn:oasis:names:specification:ubl:schema:xsd:Invoice-2</namespace>
-    &lt;!&ndash; Namespace for acceptMatch XPATH within validator report XML &ndash;&gt;
+    <!-- Namespace for acceptMatch XPATH within validator report XML -->
     <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>
 
     <match>exists(/invoice:Invoice[ cbc:CustomizationID/text() = 'urn:cen.eu:en16931:2017' ])</match>
@@ -389,9 +388,7 @@
     </createReport>
     <acceptMatch>/rep:report/rep:assessment[1]/rep:accept[1]</acceptMatch>
   </scenario>
--->
 
-<!--
   <scenario>
     <name>EN16931 (UBL CreditNote)</name>
     <description>
@@ -399,18 +396,18 @@
       <p>Uses UBL CreditNote 2.1 XML Schema, 
                 Schematron rules from EN16931:2017, and XRechnung
                 3.0.2 </p>
-      <p>Download of UBL XML Schema on 2024-11-19 from
+      <p>Download of UBL XML Schema on 2025-03-24 from
                 http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.zip</p>
-      <p>Download of UBL Schematron rules on 2024-11-19 from
-                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.12/en16931-ubl-1.3.12.zip</p>
+      <p>Download of UBL Schematron rules on 2025-03-24 from
+                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.13/en16931-ubl-1.3.13.zip</p>
      
     </description>
-    &lt;!&ndash; UBL CrediteNote Namespaces &ndash;&gt;
+    <!-- UBL CrediteNote Namespaces -->
     <namespace prefix="cbc"
       >urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</namespace>
     <namespace prefix="creditnote"
       >urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2</namespace>
-    &lt;!&ndash; Namespace for acceptMatch XPATH within validator report XML &ndash;&gt;
+    <!-- Namespace for acceptMatch XPATH within validator report XML -->
     <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>
 
     <match>exists(/creditnote:CreditNote[cbc:CustomizationID/text() = 'urn:cen.eu:en16931:2017'])</match>
@@ -435,9 +432,7 @@
     </createReport>
     <acceptMatch>/rep:report/rep:assessment[1]/rep:accept[1]</acceptMatch>
   </scenario>
--->
 
-<!--
   <scenario>
     <name>EN16931 (CII)</name>
     <description>
@@ -446,17 +441,17 @@
       <p>Uses UN/CEFACT (SCRDM - CII uncoupled) version
                 D16B XML Schema, Schematron rules from EN16931:2017,
                 and XRechnung Schematron rules version 3.0.2 </p>
-      <p>Download of CII uncoupled XML Schema on 2024-11-19 from
+      <p>Download of CII uncoupled XML Schema on 2025-03-24 from
                 https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/xeinkauf/D16B_SCRDM__Subset__CII/D16B/D16B_SCRDM__Subset__CII-D16B.zip</p>
-      <p>Download of CII Schematron rules on 2024-11-19 from
-                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.12/en16931-cii-1.3.12.zip </p>
+      <p>Download of CII Schematron rules on 2025-03-24 from
+                https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/download/validation-1.3.13/en16931-cii-1.3.13.zip </p>
     </description>
-    &lt;!&ndash; CII namespaces &ndash;&gt;
+    <!-- CII namespaces -->
     <namespace prefix="rsm"
       >urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100</namespace>
     <namespace prefix="ram"
       >urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100</namespace>
-    &lt;!&ndash; Namespace for acceptMatch XPATH within validator report XML &ndash;&gt;
+    <!-- Namespace for acceptMatch XPATH within validator report XML -->
     <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>
 
     <match>exists(/rsm:CrossIndustryInvoice[ rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID/text() = 'urn:cen.eu:en16931:2017'])</match>
@@ -482,7 +477,6 @@
     </createReport>
     <acceptMatch>/rep:report/rep:assessment[1]/rep:accept[1]</acceptMatch>
   </scenario>
--->
 
   <!-- In case none of the aboce scenarios matched/were applied -->
   <noScenarioReport>

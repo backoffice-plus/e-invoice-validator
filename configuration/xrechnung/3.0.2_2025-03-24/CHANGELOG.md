@@ -7,6 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 -->
 
+## 2025-03-21
+
+This release is compatible with XRechnung 3.0.x
+
+### Added
+
+* CEN unexpected test `cii-sr-030-wrong-cardinality-bt-22.xml`on missing BT-22 in CII
+
+### Changed
+
+* Using [CEN Schematron Rules 1.3.13](https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/tag/validation-1.3.13)
+* CEN Unit Test `cii-cii-sr-462-bt-8-cardinality-test.xml`
+* `cii-br-dec-23-test.xml` moved from CEN Unexpected Tests to CEN Unit Tests
+* added docs/usage.md to dist
+* path to development.md in readme.md
+
 ## 2024-10-31
 
 This release is compatible with XRechnung 3.0.x
