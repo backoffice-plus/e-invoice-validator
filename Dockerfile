@@ -1,36 +1,27 @@
-FROM alpine:3.21 AS builder
-ARG KOSIT_VALIDATOR_VERSION=1.5.0
+FROM eclipse-temurin:21-jre-jammy@sha256:d63bd8d9b171999cbed8576f2c76e874dd4856791a358536e5c4d407e77edc13
 
-# download kosit validator & symlink validationtool-standalone to our version
-RUN wget -O /tmp/validator.zip https://github.com/itplr-kosit/validator/releases/download/v${KOSIT_VALIDATOR_VERSION}/validator-${KOSIT_VALIDATOR_VERSION}-distribution.zip && \
-    unzip /tmp/validator.zip -d /kosit-validator && \
-    cd /kosit-validator && \
-    ln -sf validationtool-${KOSIT_VALIDATOR_VERSION}-standalone.jar validationtool-standalone.jar
+ARG KOSIT_VALIDATOR_VERSION=1.6.2
+ARG KOSIT_VALIDATOR_SHA256=244978514ad48f67c7573acfffc8f4fd73d81feda6f276710033f9913579857e
 
-# FROM --platform=linux/amd64 eclipse-temurin:21 TODO: causes errors, when used without platform flag
-FROM openjdk:17-jdk-slim
-
-RUN apt-get update -qq && \
-    apt-get install -y --force-yes curl && \
-    apt-get clean autoclean && \
-    apt-get autoremove --yes && \
-    rm -rf /var/lib/{apt,dpkg,cache,log}/
-
-# Set working directory inside the container
 WORKDIR /java-app
 
-# Copy the validation tool and merged configuration
-COPY --from=builder /kosit-validator /java-app
+RUN curl --fail --location --retry 3 \
+      --output validator-standalone.jar \
+      "https://github.com/itplr-kosit/validator/releases/download/v${KOSIT_VALIDATOR_VERSION}/validator-${KOSIT_VALIDATOR_VERSION}-standalone.jar" && \
+    echo "${KOSIT_VALIDATOR_SHA256}  validator-standalone.jar" | sha256sum --check --strict
+
 COPY configuration /java-app/configuration
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=3s --retries=10 \
+EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=10 \
   CMD curl -fsS http://127.0.0.1:80/server/health | grep -q "<ns2:status>UP</ns2:status>"
 
-CMD ["java", "-jar", "validationtool-standalone.jar",\
-"-s", "configuration/factur-x/1.07.2/scenarios.xml", "-r", "configuration/factur-x/1.07.2",\
-"-s", "configuration/xrechnung/2.3.1_2023-05-12/scenarios.xml", "-r", "configuration/xrechnung/2.3.1_2023-05-12",\
-"-s", "configuration/xrechnung/2.2.0_2022-11-15/scenarios.xml", "-r", "configuration/xrechnung/2.2.0_2022-11-15",\
-"-s", "configuration/xrechnung/2.1.1_2021-11-15/scenarios.xml", "-r", "configuration/xrechnung/2.1.1_2021-11-15",\
-"-s", "configuration/xrechnung/2.0.1_2020-12-31/scenarios.xml", "-r", "configuration/xrechnung/2.0.1_2020-12-31",\
-"-s", "configuration/xrechnung/3.0.2_2025-03-24/scenarios.xml", "-r", "configuration/xrechnung/3.0.2_2025-03-24",\
-"-D", "-P", "80", "-H", "0.0.0.0", "--disable-gui"]
+CMD ["java", "-jar", "validator-standalone.jar", \
+  "-s", "configuration/factur-x/1.09/scenarios.xml", "-r", "configuration/factur-x/1.09", \
+  "-s", "configuration/xrechnung/2.3.1_2023-05-12/scenarios.xml", "-r", "configuration/xrechnung/2.3.1_2023-05-12", \
+  "-s", "configuration/xrechnung/2.2.0_2022-11-15/scenarios.xml", "-r", "configuration/xrechnung/2.2.0_2022-11-15", \
+  "-s", "configuration/xrechnung/2.1.1_2021-11-15/scenarios.xml", "-r", "configuration/xrechnung/2.1.1_2021-11-15", \
+  "-s", "configuration/xrechnung/2.0.1_2020-12-31/scenarios.xml", "-r", "configuration/xrechnung/2.0.1_2020-12-31", \
+  "-s", "configuration/xrechnung/3.0.2_2026-01-31/scenarios.xml", "-r", "configuration/xrechnung/3.0.2_2026-01-31", \
+  "-D", "-P", "80", "-H", "0.0.0.0", "--disable-gui"]

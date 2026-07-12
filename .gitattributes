@@ -1,0 +1,6 @@
+# Normative and regression artefacts are SHA-256 pinned. Store their upstream
+# bytes verbatim; in particular, do not normalize mixed LF/CRLF XML files.
+configuration/factur-x/1.09/** -text whitespace=-trailing-space
+configuration/xrechnung/3.0.2_2026-01-31/** -text whitespace=-trailing-space
+test-data/valid-files/xrechnung-3.0.2/**/*.xml -text whitespace=-trailing-space
+tools/factur-x-xslt/rule-id-map.json -text whitespace=-trailing-space

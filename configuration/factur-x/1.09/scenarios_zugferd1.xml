@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenarios xmlns="http://www.xoev.de/de/validator/framework/1/scenarios"
+  frameworkVersion="1.0.0">
+  <name>Validator Configuration ZUGFeRD 1.0</name>
+  <author>MGGM Software GmbH - Peter Sawatzki / Landrix Software - Sven Harazim </author>
+  <date>2025-02-13</date>
+  <description>
+  <p>ZUGFeRD Validator Configuration ZUGFeRD 1.0 (experimental)</p>
+  </description>
+
+  <scenario>
+    <name>ZUGFeRD 1</name>
+    <description>
+      <p>Validates ZUGFeRD 1</p>
+    </description>
+    <!-- CII namespaces -->
+    <namespace prefix="rsm">urn:ferd:CrossIndustryDocument:invoice:1p0</namespace>
+    <namespace prefix="ram">urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12</namespace>
+    <!-- Namespace for acceptMatch XPATH within validator report XML -->
+    <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>
+
+    <match>
+       exists(/rsm:CrossIndustryDocument[ rsm:SpecifiedExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID/text() = 'urn:ferd:CrossIndustryDocument:invoice:1p0:extended']) <!-- ZUGFeRD 1.0 extended -->
+    or exists(/rsm:CrossIndustryDocument[ rsm:SpecifiedExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID/text() = 'urn:ferd:CrossIndustryDocument:invoice:1p0:comfort'])  <!-- ZUGFeRD 1.0 comfort -->
+    or exists(/rsm:CrossIndustryDocument[ rsm:SpecifiedExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID/text() = 'urn:ferd:CrossIndustryDocument:invoice:1p0:basic'])  <!-- ZUGFeRD 1.0 basic -->
+    </match>
+    <validateWithXmlSchema>
+      <resource>
+        <name>XML Schema for ZUGFeRD1</name>
+        <location>Schema/zugferd1/ZUGFeRD1p0.xsd</location>
+      </resource>
+    </validateWithXmlSchema>
+
+    <validateWithSchematron>
+      <resource>
+        <name>Schematron rules for ZUGFeRD 1</name>
+        <location>Schema/zugferd1/ZUGFeRD_1p0_mggm.xsl</location>
+      </resource>
+    </validateWithSchematron>
+
+    <createReport>
+      <resource>
+        <name>Validation report for ZUGFeRD 1</name>
+        <location>resources/xrechnung-report.xsl</location>
+      </resource>
+    </createReport>
+    <acceptMatch>/rep:report/rep:assessment[1]/rep:accept[1]</acceptMatch>
+  </scenario>
+
+  <!-- In case none of the aboce scenarios matched/were applied -->
+  <noScenarioReport>
+    <resource>
+      <name>Default Report</name>
+      <location>resources/default-report.xsl</location>
+    </resource>
+  </noScenarioReport>
+</scenarios>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>plus.backoffice.einvoice</groupId>
+  <artifactId>factur-x-xslt</artifactId>
+  <version>1.09-2.5</version>
+  <packaging>pom</packaging>
+
+  <name>Factur-X 1.09 Schematron compiler</name>
+  <description>Reproducible Schematron-to-XSLT compilation for the vendored Factur-X 1.09 rules.</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <ph.schematron.plugin.version>9.0.1</ph.schematron.plugin.version>
+    <factur.x.schema.dir>${project.basedir}/../../configuration/factur-x/1.09/Schema/factur-x-1.09</factur.x.schema.dir>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.helger.maven</groupId>
+        <artifactId>ph-schematron-maven-plugin</artifactId>
+        <version>${ph.schematron.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>compile-factur-x-1.09</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>${factur.x.schema.dir}</schematronDirectory>
+              <xsltDirectory>${project.build.directory}/generated-xslt</xsltDirectory>
+              <schematronPattern>**/*.sch</schematronPattern>
+              <languageCode>en</languageCode>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
