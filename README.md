@@ -36,8 +36,10 @@ Under the hood, it uses the official [KoSIT validator](https://github.com/itplr-
 ## Usage
 
 ```bash
-docker run -p8080:80 backofficeplus/e-invoice-validator:latest
+docker run -p8888:80 backofficeplus/e-invoice-validator:latest
 ```
+
+The current image uses KoSIT Validator 1.6.2, Factur-X 1.09/ZUGFeRD 2.5, and the XRechnung 3.0.2 validator configuration released on 2026-01-31. The multi-architecture Temurin 21 JRE base and KoSIT standalone JAR are digest-pinned. Older versioned configurations remain available in this repository for regression comparisons, but are not activated alongside their replacements.
 
 ### Access the HTTP interface
 
@@ -55,7 +57,7 @@ Examples:
 #### cURL
 
 ```shell script
-curl --location --request POST 'http://localhost:8080' \
+curl --location --request POST 'http://localhost:8888' \
 --header 'Content-Type: application/xml' \
 --data-binary '@/target.xml'
 ```
@@ -64,7 +66,7 @@ curl --location --request POST 'http://localhost:8080' \
 
 ```java
 HttpClient httpClient = HttpClientBuilder.create().build();
-HttpPost postRequest = new HttpPost("http://localhost:8080/");
+HttpPost postRequest = new HttpPost("http://localhost:8888/");
 FileEntity entity = new FileEntity(Paths.get("some.xml").toFile(), ContentType.APPLICATION_XML);
 postRequest.setEntity(entity);
 HttpResponse response = httpClient.execute(postRequest);
@@ -86,7 +88,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://localhost:8080", requestOptions)
+fetch("http://localhost:8888", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -97,7 +99,7 @@ fetch("http://localhost:8080", requestOptions)
 ```php
 $httpClient = HttpClient::create();
 
-$response = $httpClient->request('POST', 'http://localhost:8080', [
+$response = $httpClient->request('POST', 'http://localhost:8888', [
   'headers' => [
     'Content-Type' => 'application/xml',
   ],
@@ -134,7 +136,7 @@ This directory includes a bash test script to validate multiple XML files agains
 The current files are a set composed of [official XRechnung test corpus from KoSIT](https://github.com/itplr-kosit/xrechnung-testsuite/releases?page=1)
 and example files from [FeRD](https://www.ferd-net.de/)
 
-- The script assumes the validator API is available at `http://localhost:8080/`
+- The script defaults to `http://localhost:8888/`. Override it with `API_URL`, for example `API_URL=http://localhost:8080 ./validation-api.spec.sh`.
 - Valid XML files are placed in `test-data/valid-files/`
 - Invalid XML files are placed in `test-data/invalid-files/`
 
@@ -151,17 +153,44 @@ For verbose output, use:
 ./validation-api.spec.sh -v
 ```
 
+If the licensed Factur-X 1.09 X20 example is available locally, include the sub-invoice-line runtime canary without committing the example package:
+
+```bash
+FACTUR_X_X20_CANARY=/path/to/X20_01_SubInvoiceLines_Buero_Material_Bsp3__.xml \
+  ./validation-api.spec.sh
+```
+
 The script will:
-1. Find all XML files in the test directories
-2. Send each file to the validator API
-3. Check if the validation results match expectations
-4. Display a summary of test results
+1. Wait for the validator health endpoint
+2. Find all XML files in the test directories
+3. Send each file to the validator API with bounded connection and request timeouts
+4. Check status codes and the corresponding acceptance or rejection recommendation
+5. Verify stable Factur-X warning and error report codes, plus the optional local X20 corrigendum case
+6. Display a summary and return a reliable binary exit status
 
 ### Test Script Behavior
 
 The script validates files with the following criteria:
 - Valid files should return status code 200 and contain an acceptance recommendation
 - Invalid files should return status code 406
+
+The repository currently contains 325 positive and 8 negative XML regression cases. The XRechnung 3.0.2 directory contains all 86 instances from the official KoSIT testsuite release `v2026-01-31` plus the 12 byte-pinned technical cases from the previous repository baseline. Both generations remain part of every API regression run, so an upstream directory restructuring cannot silently discard historical coverage.
+
+### Regenerating Factur-X validators
+
+The five Factur-X XSLT validators are generated from the adjacent pinned Schematron sources using `ph-schematron-maven-plugin` 9.0.1. Verify that the committed validators are reproducible with:
+
+```bash
+./scripts/regenerate-factur-x-xslt.sh --check
+```
+
+Configuration references, release-layer separation, Factur-X corrigendum canaries, pinned corpus trees, and corpus counts are checked with:
+
+```bash
+python3 scripts/check-configuration.py
+```
+
+See the [Factur-X provenance](configuration/factur-x/1.09/PROVENANCE.md) and [XRechnung provenance](configuration/xrechnung/3.0.2_2026-01-31/PROVENANCE.md) records for source commits, hashes, packaging corrections, and local acceptance policy.
 
 ### Exit Codes
 
@@ -204,15 +233,24 @@ The script validates files with the following criteria:
 
 * XRechnung 3.0.2 - EN16931 XRechnung (UBL Invoice)
 * XRechnung 3.0.2 - EN16931 XRechnung Extension (UBL Invoice)
+* XRechnung 3.0.2 - EN16931 XRechnung CVD (UBL Invoice)
 * XRechnung 3.0.2 - EN16931 XRechnung (UBL CreditNote)
+* XRechnung 3.0.2 - EN16931 XRechnung CVD (UBL CreditNote)
 * XRechnung 3.0.2 - EN16931 XRechnung (CII)
 * XRechnung 3.0.2 - EN16931 XRechnung Extension (CII)
+* XRechnung 3.0.2 - EN16931 XRechnung CVD (CII)
+* Generic EN16931 1.3.16 (UBL Invoice and CreditNote)
 
-### ZUGFeRD 2.3 / Factur-X 1.07
+The XRechnung-specific scenarios use the CEN 1.3.15 rules bundled by KoSIT. Only the two generic UBL scenarios use EN16931 validation artefacts 1.3.16. The generic CII scenario is handled by the Factur-X configuration to avoid ambiguous matches.
 
-* ZUGFeRD 2.3.2/Factur-X 1.07.2 - EN16931 (CII) Extended
-* ZUGFeRD 2.3.2/Factur-X 1.07.2 - Basic
-* ZUGFeRD 2.3.2/Factur-X 1.07.2 - Comfort (EN16931)
+### ZUGFeRD 2.5 / Factur-X 1.09
+
+* ZUGFeRD 2.5/Factur-X 1.09 - EN16931 (CII) Extended
+* ZUGFeRD 2.5/Factur-X 1.09 - Basic
+* ZUGFeRD 2.5/Factur-X 1.09 - Comfort (EN16931)
+* Generic EN16931 (CII) fallback for non-XRechnung specializations
+
+MINIMUM and BASIC WL remain available as technical Factur-X profiles in the vendored rule set, but this service intentionally rejects them because they are not complete EN16931 invoices.
 
 ## Detailed information about supported standards
 
@@ -295,7 +333,7 @@ The validator supports the following validation sets from the [KoSIT XRechnung C
 - 2.1.1 (2021-11-15)
 - 2.2.0 (2022-11-15)
 - 2.3.1 (2023-05-12)
-- 3.0.2 (2025-03-24)
+- 3.0.2 (2026-01-31)
 
 #### Further information
 
