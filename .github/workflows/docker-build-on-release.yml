@@ -1,56 +1,147 @@
-name: Build and Push Docker Image on Release
+name: Test, build and push Docker image on release
 
 on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: e-invoice-validator-release-publish
+  cancel-in-progress: false
+
 jobs:
-  docker:
+  test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Set up Java
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: tools/factur-x-xslt/pom.xml
+
+      - name: Check generated Factur-X validators
+        run: ./scripts/regenerate-factur-x-xslt.sh --check
+
+      - name: Check configuration and corpus invariants
+        run: python3 scripts/check-configuration.py
+
+      - name: Check shell scripts
+        run: |
+          bash -n validation-api.spec.sh
+          bash -n scripts/regenerate-factur-x-xslt.sh
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
 
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
+      - name: Build smoke-test images
+        run: |
+          docker buildx build --load --platform linux/amd64 --tag e-invoice-validator:smoke-amd64 .
+          docker buildx build --load --platform linux/arm64 --tag e-invoice-validator:smoke-arm64 .
+
+      - name: Run API regression suites
+        run: |
+          set -euo pipefail
+
+          cleanup() {
+            result=$?
+            if [[ $result -ne 0 ]]; then
+              docker logs e-invoice-validator-smoke-amd64 || true
+              docker logs e-invoice-validator-smoke-arm64 || true
+            fi
+            docker rm --force e-invoice-validator-smoke-amd64 >/dev/null 2>&1 || true
+            docker rm --force e-invoice-validator-smoke-arm64 >/dev/null 2>&1 || true
+            exit "$result"
+          }
+          trap cleanup EXIT
+
+          docker run --detach \
+            --platform linux/amd64 \
+            --name e-invoice-validator-smoke-amd64 \
+            --publish 127.0.0.1:8888:80 \
+            e-invoice-validator:smoke-amd64
+
+          API_URL=http://127.0.0.1:8888 ./validation-api.spec.sh
+          docker rm --force e-invoice-validator-smoke-amd64
+
+          docker run --detach \
+            --platform linux/arm64 \
+            --name e-invoice-validator-smoke-arm64 \
+            --publish 127.0.0.1:8888:80 \
+            e-invoice-validator:smoke-arm64
+
+          API_URL=http://127.0.0.1:8888 ./validation-api.spec.sh
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-      - name: Extract release tag
-        id: extract_tag
+      - name: Determine whether this is the latest stable release
+        id: release
+        env:
+          CURRENT_TAG: ${{ github.event.release.tag_name }}
+          GH_TOKEN: ${{ github.token }}
+          IS_PRERELEASE: ${{ github.event.release.prerelease }}
         run: |
-          echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          set -euo pipefail
 
-      - name: Build and push Docker image with release tag (multi-arch)
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: backofficeplus/e-invoice-validator:${{ steps.extract_tag.outputs.tag }}
-
-      - name: Check if release is not a prerelease
-        id: is_latest
-        run: |
-          if [[ "${{ github.event.release.prerelease }}" == "false" ]]; then
-            echo "set_latest=true" >> $GITHUB_OUTPUT
-          else
-            echo "set_latest=false" >> $GITHUB_OUTPUT
+          publish_latest=false
+          current_version=${CURRENT_TAG#v}
+          if [[ "$IS_PRERELEASE" == 'false' && "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            latest_version=$(
+              gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+                --jq '.[] | select(.draft == false and .prerelease == false) | .tag_name' \
+                | sed 's/^v//' \
+                | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' \
+                | sort -V \
+                | tail -n 1
+            )
+            if [[ "$current_version" == "$latest_version" ]]; then
+              publish_latest=true
+            fi
           fi
+          echo "publish_latest=$publish_latest" >> "$GITHUB_OUTPUT"
 
-      - name: Tag and push latest image if not a prerelease (multi-arch)
-        if: steps.is_latest.outputs.set_latest == 'true'
-        uses: docker/build-push-action@v5
+      - name: Prepare image tags
+        id: metadata
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
+        with:
+          images: backofficeplus/e-invoice-validator
+          tags: |
+            type=raw,value=${{ github.event.release.tag_name }}
+            type=raw,value=latest,enable=${{ steps.release.outputs.publish_latest == 'true' }}
+
+      - name: Build and push multi-architecture image
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: backofficeplus/e-invoice-validator:latest
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
