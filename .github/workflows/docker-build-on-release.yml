@@ -3,9 +3,18 @@ name: Test, build and push Docker image on release
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing published release tag to test and publish
+        required: true
+        type: string
 
 permissions:
   contents: read
+
+env:
+  RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag }}
 
 concurrency:
   group: e-invoice-validator-release-publish
@@ -18,6 +27,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/tags/${{ env.RELEASE_TAG }}
+
+      - name: Verify published release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json isDraft --jq '.isDraft')" = false
 
       - name: Set up Java
         uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
@@ -65,6 +83,9 @@ jobs:
           docker buildx build --load --platform linux/arm64 --tag e-invoice-validator:smoke-arm64 .
 
       - name: Run API regression suites
+        env:
+          # ARM64 startup under QEMU is slower than native startup.
+          READINESS_TIMEOUT_SECONDS: '600'
         run: |
           set -euo pipefail
 
@@ -104,6 +125,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/tags/${{ env.RELEASE_TAG }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
@@ -120,15 +143,15 @@ jobs:
       - name: Determine whether this is the latest stable release
         id: release
         env:
-          CURRENT_TAG: ${{ github.event.release.tag_name }}
+          CURRENT_TAG: ${{ env.RELEASE_TAG }}
           GH_TOKEN: ${{ github.token }}
-          IS_PRERELEASE: ${{ github.event.release.prerelease }}
         run: |
           set -euo pipefail
 
           publish_latest=false
           current_version=${CURRENT_TAG#v}
-          if [[ "$IS_PRERELEASE" == 'false' && "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          is_prerelease=$(gh release view "$CURRENT_TAG" --repo "$GITHUB_REPOSITORY" --json isPrerelease --jq '.isPrerelease')
+          if [[ "$is_prerelease" == 'false' && "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             latest_version=$(
               gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
                 --jq '.[] | select(.draft == false and .prerelease == false) | .tag_name' \
@@ -147,9 +170,10 @@ jobs:
         id: metadata
         uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         with:
+          context: git
           images: backofficeplus/e-invoice-validator
           tags: |
-            type=raw,value=${{ github.event.release.tag_name }}
+            type=raw,value=${{ env.RELEASE_TAG }}
             type=raw,value=latest,enable=${{ steps.release.outputs.publish_latest == 'true' }}
 
       - name: Build and push multi-architecture image
