@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -87,6 +88,8 @@ def parse_xml_assets() -> int:
 def check_offline_reference_closure() -> int:
     checked = 0
     for configuration_root in (FACTUR_X_ROOT, XRECHNUNG_ROOT):
+        # Compare actual directory-entry names even on case-insensitive filesystems.
+        asset_paths = {path for path in configuration_root.rglob('*') if path.is_file()}
         for path in sorted(configuration_root.rglob('*')):
             if not path.is_file() or path.suffix.lower() not in XML_SUFFIXES:
                 continue
@@ -116,7 +119,7 @@ def check_offline_reference_closure() -> int:
                         if name == 'location'
                         else path.parent / decoded_path
                     )
-                    if not target.is_file():
+                    if Path(os.path.abspath(target)) not in asset_paths:
                         fail(
                             f'Missing referenced asset from {path.relative_to(REPOSITORY_ROOT)}: '
                             f'{reference}'
@@ -137,7 +140,7 @@ def check_offline_reference_closure() -> int:
                         f'{path.relative_to(REPOSITORY_ROOT)}: {reference}'
                     )
                 target = path.parent / unquote(parts.path)
-                if not target.is_file():
+                if Path(os.path.abspath(target)) not in asset_paths:
                     fail(
                         f'Missing document() asset from {path.relative_to(REPOSITORY_ROOT)}: '
                         f'{reference}'

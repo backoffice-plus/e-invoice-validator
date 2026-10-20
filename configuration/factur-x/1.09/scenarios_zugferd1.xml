@@ -34,7 +34,7 @@
     <validateWithSchematron>
       <resource>
         <name>Schematron rules for ZUGFeRD 1</name>
-        <location>Schema/zugferd1/ZUGFeRD_1p0_mggm.xsl</location>
+        <location>Schema/zugferd1/zugferd_1p0_mggm.xsl</location>
       </resource>
     </validateWithSchematron>
 
