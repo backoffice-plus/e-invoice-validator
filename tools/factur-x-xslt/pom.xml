@@ -6,16 +6,17 @@
 
   <groupId>plus.backoffice.einvoice</groupId>
   <artifactId>factur-x-xslt</artifactId>
-  <version>1.09-2.5</version>
+  <version>1.09.2-2.5.2</version>
   <packaging>pom</packaging>
 
-  <name>Factur-X 1.09 Schematron compiler</name>
-  <description>Reproducible Schematron-to-XSLT compilation for the vendored Factur-X 1.09 rules.</description>
+  <name>Factur-X 1.09.2 Schematron compiler</name>
+  <description>Reproducible Schematron-to-XSLT compilation for the vendored Factur-X rules.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <ph.schematron.plugin.version>9.0.1</ph.schematron.plugin.version>
-    <factur.x.schema.dir>${project.basedir}/../../configuration/factur-x/1.09/Schema/factur-x-1.09</factur.x.schema.dir>
+    <ph.schematron.plugin.version>10.2.0</ph.schematron.plugin.version>
+    <factur.x.version>1.09.2</factur.x.version>
+    <factur.x.schema.dir>${project.basedir}/../../configuration/factur-x/${factur.x.version}/Schema/factur-x-${factur.x.version}</factur.x.schema.dir>
   </properties>
 
   <build>
@@ -26,7 +27,7 @@
         <version>${ph.schematron.plugin.version}</version>
         <executions>
           <execution>
-            <id>compile-factur-x-1.09</id>
+            <id>compile-factur-x</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>convert</goal>

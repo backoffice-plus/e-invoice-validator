@@ -39,7 +39,7 @@ Under the hood, it uses the official [KoSIT validator](https://github.com/itplr-
 docker run -p8888:80 backofficeplus/e-invoice-validator:latest
 ```
 
-The current image uses KoSIT Validator 1.6.2, Factur-X 1.09/ZUGFeRD 2.5, and the XRechnung 3.0.2 validator configuration released on 2026-01-31. The multi-architecture Temurin 21 JRE base and KoSIT standalone JAR are digest-pinned. Older versioned configurations remain available in this repository for regression comparisons, but are not activated alongside their replacements.
+The current image uses KoSIT Validator 1.6.3, Factur-X 1.09.2/ZUGFeRD 2.5.2, and the XRechnung 3.0.2 validator configuration released on 2026-08-31. The generic UBL scenarios use EN 16931 validation artefacts 1.3.17. These versions were checked against the upstream stable releases on 2026-10-20. The multi-architecture Temurin 21.0.12.1 JRE base and KoSIT standalone JAR are digest-pinned. KoSIT 1.6.3 includes the URI-resolution security fix [GHSA-hg2c-p2m3-q29m](https://github.com/itplr-kosit/validator/security/advisories/GHSA-hg2c-p2m3-q29m). Older versioned configurations remain available in this repository for regression comparisons, but are not activated alongside their replacements.
 
 ### Access the HTTP interface
 
@@ -165,8 +165,9 @@ The script will:
 2. Find all XML files in the test directories
 3. Send each file to the validator API with bounded connection and request timeouts
 4. Check status codes and the corresponding acceptance or rejection recommendation
-5. Verify stable Factur-X warning and error report codes, plus the optional local X20 corrigendum case
-6. Display a summary and return a reliable binary exit status
+5. Verify native Factur-X warning and error report codes, plus the optional local X20 sub-invoice-line case
+6. Check generic UBL invoice/credit-note acceptance, the EN16931 1.3.17 VAT-prefix and legal-entity rules, and the XRechnung CII contact-field cardinality
+7. Display a summary and return a reliable binary exit status
 
 ### Test Script Behavior
 
@@ -174,23 +175,51 @@ The script validates files with the following criteria:
 - Valid files should return status code 200 and contain an acceptance recommendation
 - Invalid files should return status code 406
 
-The repository currently contains 325 positive and 8 negative XML regression cases. The XRechnung 3.0.2 directory contains all 86 instances from the official KoSIT testsuite release `v2026-01-31` plus the 12 byte-pinned technical cases from the previous repository baseline. Both generations remain part of every API regression run, so an upstream directory restructuring cannot silently discard historical coverage.
+The repository currently contains 399 positive and 12 negative XML regression cases. The XRechnung 3.0.2 directory contains all 86 instances from the official KoSIT testsuite release `v2026-08-31`, 78 changed January 2026 instances under `historical/2026-01-31`, and the 12 byte-pinned technical cases from the previous repository baseline. The eight unchanged January instances are shared with the current corpus. All generations remain part of every API regression run.
+
+Four historical Factur-X examples declaring XRechnung 3.0 now belong to the negative corpus: they supply both a person and a department name for seller contact BT-41. The current official configuration treats this duplicate field as an error (`CII-SR-465`). The original XML files are preserved; see the [fixture notes](test-data/invalid-files/factur-x-1.07.2/5.%20XRECHNUNG/README.md).
+
+### Additional upstream regression suites
+
+The [upstream corpora](test-data/upstream/README.md) add the official CEN EN16931 1.3.17 fragment tests, XRechnung Schematron 2.6.0 mutations, KoSIT configuration integration and processing tests, and full CII/UBL invoices from Mustangproject. Source releases, licenses and file hashes are retained alongside the imports.
+
+The API suite now exercises 500 complete XML cases (411 historical and 89 Mustang cases), plus generated rule canaries. The isolated suites add 1,140 CEN fragment cases and 1,888 KoSIT mutation variants with 1,962 rule expectations. Fifteen known upstream discrepancies are confined to the separately documented future-target tests. Nine historical ZUGFeRD 1 source files are retained with explicit exclusions because that format is not enabled by this service.
+
+The generic UBL validator includes a reproducible correction for EN16931 1.3.17's missing Greek VAT prefix `EL` in `BR-CO-09`. The original release artefact remains unchanged; a separate corrected stylesheet restores only this explicitly allowed prefix. Generated API cases check both `EL` and `GR`, including credit notes, while still rejecting invalid short prefixes. Verify the correction with `python3 scripts/repair-en16931-ubl.py --check`.
+
+Run all checks against a running validator:
+
+```bash
+API_URL=http://localhost:8888 ./scripts/test-all.sh
+```
+
+The isolated rule and mutation suites can also run without the HTTP service:
+
+```bash
+./scripts/test-rule-corpora.sh
+```
+
+The existing `./validation-api.spec.sh` command includes the additional full-invoice API corpus. Its manifests check expected rule codes, effective warning/error severity and scenario selection as well as HTTP status. The fragment suite checks all 1,140 scoped upstream expectations, including exact occurrence counts; the mutation suite executes the upstream XML-Mutate instructions against the deployed XRechnung artefacts. Known upstream discrepancies are explicit expected failures; unexpected passes, changed failures and missing cases fail the run.
+
+The rule suites require a Java 21 JDK and Python 3.10 or newer. `test-all.sh` also checks Factur-X generation and requires Maven. The first run downloads checksum-pinned Java tools; subsequent runs use the local cache. Use `VALIDATOR_JAR=/absolute/path/validator-1.6.3-standalone.jar` to provide an existing engine. The release workflow executes these suites before building and running the API tests on both AMD64 and ARM64.
 
 ### Regenerating Factur-X validators
 
-The five Factur-X XSLT validators are generated from the adjacent pinned Schematron sources using `ph-schematron-maven-plugin` 9.0.1. Verify that the committed validators are reproducible with:
+The five Factur-X XSLT validators are generated from the adjacent pinned Schematron sources using `ph-schematron-maven-plugin` 10.2.0. Verify that the committed validators are reproducible with:
 
 ```bash
 ./scripts/regenerate-factur-x-xslt.sh --check
 ```
 
-Configuration references, release-layer separation, Factur-X corrigendum canaries, pinned corpus trees, and corpus counts are checked with:
+The previous Factur-X 1.09 bundle remains reproducible with `./scripts/regenerate-factur-x-xslt.sh --version 1.09 --check`, which retains compiler 9.0.1.
+
+Configuration references, release-layer separation, Factur-X sub-invoice-line canaries, pinned corpus trees, and corpus counts are checked with:
 
 ```bash
 python3 scripts/check-configuration.py
 ```
 
-See the [Factur-X provenance](configuration/factur-x/1.09/PROVENANCE.md) and [XRechnung provenance](configuration/xrechnung/3.0.2_2026-01-31/PROVENANCE.md) records for source commits, hashes, packaging corrections, and local acceptance policy.
+See the [Factur-X provenance](configuration/factur-x/1.09.2/PROVENANCE.md) and [XRechnung provenance](configuration/xrechnung/3.0.2_2026-08-31/PROVENANCE.md) records for source commits, hashes, packaging corrections, and local acceptance policy.
 
 ### Exit Codes
 
@@ -239,16 +268,20 @@ See the [Factur-X provenance](configuration/factur-x/1.09/PROVENANCE.md) and [XR
 * XRechnung 3.0.2 - EN16931 XRechnung (CII)
 * XRechnung 3.0.2 - EN16931 XRechnung Extension (CII)
 * XRechnung 3.0.2 - EN16931 XRechnung CVD (CII)
-* Generic EN16931 1.3.16 (UBL Invoice and CreditNote)
+* Generic EN16931 1.3.17 (UBL Invoice and CreditNote)
 
-The XRechnung-specific scenarios use the CEN 1.3.15 rules bundled by KoSIT. Only the two generic UBL scenarios use EN16931 validation artefacts 1.3.16. The generic CII scenario is handled by the Factur-X configuration to avoid ambiguous matches.
+The XRechnung-specific scenarios use XRechnung Schematron 2.6.0 and the CEN 1.3.16 rules bundled by KoSIT. Only the two generic UBL scenarios use EN16931 validation artefacts 1.3.17. The generic CII scenario is handled by the Factur-X configuration to avoid ambiguous matches.
 
-### ZUGFeRD 2.5 / Factur-X 1.09
+### ZUGFeRD 2.5.2 / Factur-X 1.09.2
 
-* ZUGFeRD 2.5/Factur-X 1.09 - EN16931 (CII) Extended
-* ZUGFeRD 2.5/Factur-X 1.09 - Basic
-* ZUGFeRD 2.5/Factur-X 1.09 - Comfort (EN16931)
+* ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended
+* ZUGFeRD 2.5.2/Factur-X 1.09.2 - Basic
+* ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)
 * Generic EN16931 (CII) fallback for non-XRechnung specializations
+
+Factur-X 1.09.2 supplies native business-rule IDs in reports, for example `PEPPOL-EN16931-R008` for empty-element warnings and `BR-CO-16` for an incorrect amount due. Integrations that inspect the previous generated `FX-SCH-A-*` codes must use these upstream IDs. The previously applied EXTENDED corrigendum is included in the released sources.
+
+The released Schematron diagnostics also contain `<report>` rules without IDs. Their generated SVRL receives deterministic `FX-SCH-R-*` identifiers so KoSIT can process prohibited-element diagnostics as ordinary HTTP 406 rejections. Without this metadata repair, affected invoices produced HTTP 422. Rule expressions and severities are unchanged; the [provenance record](configuration/factur-x/1.09.2/PROVENANCE.md) documents generation and verification.
 
 MINIMUM and BASIC WL remain available as technical Factur-X profiles in the vendored rule set, but this service intentionally rejects them because they are not complete EN16931 invoices.
 
@@ -333,7 +366,7 @@ The validator supports the following validation sets from the [KoSIT XRechnung C
 - 2.1.1 (2021-11-15)
 - 2.2.0 (2022-11-15)
 - 2.3.1 (2023-05-12)
-- 3.0.2 (2026-01-31)
+- 3.0.2 (2026-08-31)
 
 #### Further information
 

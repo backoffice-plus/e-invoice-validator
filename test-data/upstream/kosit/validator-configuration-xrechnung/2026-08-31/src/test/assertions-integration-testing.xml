@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:assertions xmlns:a="http://www.xoev.de/de/validator/framework/1/assertions">
+  <a:namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</a:namespace>
+  <a:namespace prefix="s"
+    >http://www.xoev.de/de/validator/framework/1/scenarios</a:namespace>
+  <a:namespace prefix="html">http://www.w3.org/1999/xhtml</a:namespace>
+
+
+  <a:assertion report-doc="cii-br-s-08-rounding-rule-report.xml"
+    test="/rep:report/rep:assessment/rep:accept"
+    >Report has status accept</a:assertion>
+  
+  <a:assertion report-doc="diga-cii-extension-codes-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-21' and @level='error']">
+    
+    Should have error about BR-CL-21
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-21']">
+    
+    Should have information about BR-CL-21
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-11' and @level='error']">
+    
+    Should have error about BR-CL-11
+  </a:assertion>
+  
+  <a:assertion report-doc="diga-cii-extension-codes-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-11']">
+    
+    Should have warning about BR-CL-11
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-2-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-26' and @level='error']">
+
+    Should have error about BR-CL-26
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-2-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-26']">
+
+    Should have information about BR-CL-26
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-2-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-25' and @level='error']">
+
+    Should have error about BR-CL-25
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-2-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-25']">
+    
+    Should have information about BR-CL-25
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-2-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-10' and @level='error']">
+
+    Should have error about BR-CL-10
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-2-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-10']">
+
+    Should have information about BR-CL-10
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-2-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-21' and @level='error']">
+
+    Should have error about BR-CL-21
+  </a:assertion>
+
+  <a:assertion report-doc="diga-cii-extension-codes-2-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-21']">
+
+    Should have information about BR-CL-21
+  </a:assertion>
+
+   <a:assertion report-doc="cii-bt-20-cardinality-check-2-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'CII-SR-452' and @level='warning']">
+
+    Should have information about CII-SR-452
+  </a:assertion>
+
+  <a:assertion report-doc="cii-bt-20-cardinality-check-2-report.xml"
+    test="/rep:report/rep:assessment/rep:reject/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'error']/html:td[text() = 'CII-SR-452']">
+
+    Should have error about CII-SR-452
+  </a:assertion>
+
+  <a:assertion report-doc="cii-bt-20-cardinality-check-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'CII-SR-453' and @level='warning']">
+
+    Should have information about CII-SR-453
+  </a:assertion>
+
+  <a:assertion report-doc="cii-bt-20-cardinality-check-report.xml"
+    test="/rep:report/rep:assessment/rep:reject/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'error']/html:td[text() = 'CII-SR-453']">
+
+    Should have error about CII-SR-453
+  </a:assertion>
+
+  <a:assertion report-doc="cii-cii-sr-454-negative-test-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'CII-SR-454' and @level='warning']">
+
+    Should have information about CII-SR-454
+  </a:assertion>
+
+  <a:assertion report-doc="cii-cii-sr-454-negative-test-report.xml"
+    test="/rep:report/rep:assessment/rep:reject/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'error']/html:td[text() = 'CII-SR-454']">
+
+    Should have error about CII-SR-454
+  </a:assertion>
+  
+  <a:assertion report-doc="cii-cii-sr-465-negative-test-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'CII-SR-465' and @level='warning']">
+
+    Should have warning about CII-SR-465
+  </a:assertion>
+
+  <a:assertion report-doc="cii-cii-sr-465-negative-test-report.xml"
+    test="/rep:report/rep:assessment/rep:reject/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'error']/html:td[text() = 'CII-SR-465']">
+
+    Should have error about CII-SR-465 in assessment
+  </a:assertion>
+
+  <a:assertion report-doc="cii-cii-sr-466-negative-test-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'CII-SR-466' and @level='warning']">
+
+    Should have warning about CII-SR-466
+  </a:assertion>
+
+  <a:assertion report-doc="cii-cii-sr-466-negative-test-report.xml"
+    test="/rep:report/rep:assessment/rep:reject/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'error']/html:td[text() = 'CII-SR-466']">
+
+    Should have error about CII-SR-466 in assessment
+  </a:assertion>
+  
+  <a:assertion report-doc="cii-cii-sr-475-negative-test-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'CII-SR-475' and @level='warning']">
+    
+    Should have warning about CII-SR-475
+  </a:assertion>
+  
+  <a:assertion report-doc="cii-cii-sr-475-negative-test-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'CII-SR-475']">
+    
+    Should have information about CII-SR-475
+  </a:assertion>
+  
+  <a:assertion report-doc="cii-cii-sr-476-negative-test-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'CII-SR-476' and @level='warning']">
+    
+    Should have warning about CII-SR-476
+  </a:assertion>
+  
+  <a:assertion report-doc="cii-cii-sr-476-negative-test-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'CII-SR-476']">
+    
+    Should have information about CII-SR-476
+  </a:assertion>
+
+  <a:assertion report-doc="ubl-cr-646-sub-invoice-lines-cius-report.xml" 
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'UBL-CR-646' and @level='warning']">
+    Should have warning about UBL-CR-646
+  </a:assertion>
+  
+  <a:assertion report-doc="ubl-cr-646-sub-invoice-lines-cius-report.xml" 
+    test="/rep:report/rep:assessment/rep:reject/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'error']/html:td[text() = 'UBL-CR-646']">
+    Should have error about UBL-CR-646
+  </a:assertion>
+  
+  <a:assertion report-doc="ubl-cr-646-sub-invoice-lines-extension-report.xml" 
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'UBL-CR-646' and @level='warning']">
+    Should have warning about UBL-CR-646
+  </a:assertion>
+  
+  <a:assertion report-doc="ubl-cr-646-sub-invoice-lines-extension-report.xml" 
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'UBL-CR-646']">
+    Should have information about UBL-CR-646
+  </a:assertion>
+
+  <a:assertion report-doc="cvd-br-tmp-cvd-01-code-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-13' and @level='error']">
+    
+    Should have error about BR-CL-13
+  </a:assertion>
+  
+  <a:assertion report-doc="cvd-br-tmp-cvd-01-code-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-13']">
+    
+    Should have information about BR-CL-13
+  </a:assertion>
+  
+
+ <a:assertion report-doc="ubl-br-dex-01-extension-mime-code-report.xml"
+    test="/rep:report/rep:assessment/rep:accept">
+    Document with application/xml attachment must be accepted in Extension UBL scenario
+  </a:assertion>
+
+  <a:assertion report-doc="ubl-br-dex-01-extension-mime-code-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[@code = 'BR-CL-24']">
+    BR-CL-24 must be present in CEN validation step for application/xml mimeCode in Extension UBL scenario
+  </a:assertion>
+
+  <a:assertion report-doc="ubl-br-dex-01-extension-mime-code-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-24']">
+    BR-CL-24 must be shown as information (downgraded) in the report for Extension UBL scenario
+  </a:assertion>
+
+  <a:assertion report-doc="ubl-br-dex-01-extension-mime-code-report.xml"
+    test="not(/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[3]/rep:message[@code = 'BR-DEX-01'])">
+    BR-DEX-01 must NOT fire for application/xml in Extension UBL scenario
+  </a:assertion>
+
+  <a:assertion report-doc="cii-br-dex-01-extension-mime-code-report.xml"
+    test="/rep:report/rep:assessment/rep:accept">
+    Document with application/xml attachment must be accepted in Extension CII scenario
+  </a:assertion>
+
+  <a:assertion report-doc="cii-br-dex-01-extension-mime-code-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[@code = 'BR-CL-24']">
+    BR-CL-24 must be present in CEN validation step for application/xml mimeCode in Extension CII scenario
+  </a:assertion>
+
+  <a:assertion report-doc="cii-br-dex-01-extension-mime-code-report.xml"
+    test="/rep:report/rep:assessment/rep:accept/rep:explanation/html:html/html:body/html:table[2]/html:tbody/html:tr[@class = 'information']/html:td[text() = 'BR-CL-24']">
+    BR-CL-24 must be shown as information (downgraded) in the report for Extension CII scenario
+  </a:assertion>
+
+  <a:assertion report-doc="cii-br-dex-01-extension-mime-code-report.xml"
+    test="not(/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[3]/rep:message[@code = 'BR-DEX-01'])">
+    BR-DEX-01 must NOT fire for application/xml in Extension CII scenario
+  </a:assertion>
+
+</a:assertions>

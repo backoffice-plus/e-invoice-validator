@@ -1,0 +1,1511 @@
+{
+  "repository": "https://github.com/ZUGFeRD/mustangproject",
+  "commit": "d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020",
+  "archive_url": "https://codeload.github.com/ZUGFeRD/mustangproject/zip/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020",
+  "archive_sha256": "845a2bf0d4636ba68446aec99bc771817f228510655eab9df8ec2298066d227c",
+  "invoice_files": [
+    {
+      "file": "fixtures/Mustang-CLI/src/test/resources/cii.xml",
+      "upstream_file": "Mustang-CLI/src/test/resources/cii.xml",
+      "sha256": "baa7b3201bc29fbe7bdc525f04d905cbe260a43869bab180826f48cec6a81fc8",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/Extended_fremdwaehrung.xml",
+      "upstream_file": "library/src/test/resources/Extended_fremdwaehrung.xml",
+      "sha256": "460a999957296363b445335d881cefab6f2544c629f316b649fc141cba9f11c7",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/CalculationTest.java#L152",
+          "method": "testLineCalculatorForeignCurrencyExample"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L90",
+          "method": "testProduct"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2PushTest.java#L1446",
+          "method": "testDifferentTaxCurrency"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/TESTXRECHNUNG_INVDSS_012015776085.XML",
+      "upstream_file": "library/src/test/resources/TESTXRECHNUNG_INVDSS_012015776085.XML",
+      "sha256": "ac7b30e703bc978daad3cbb83a355c4716c3211326d25bbb858a879b787d0ccc",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L884",
+          "method": "testImportXRechnungPositionNote"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/XRECHNUNG_Betriebskostenabrechnung.ubl.xml",
+      "upstream_file": "library/src/test/resources/XRECHNUNG_Betriebskostenabrechnung.ubl.xml",
+      "sha256": "fe2adae9705746dabbd8196b1b857cc04e697074cb891ba4b8677dfbda0b4526",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/XRECHNUNG_Einfach.ubl.xml",
+      "upstream_file": "library/src/test/resources/XRECHNUNG_Einfach.ubl.xml",
+      "sha256": "a4c8accb349b9c934974142fe0857bd6f5b51d8b374dc0cc7ac6586ab06f1402",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/XRECHNUNG_Elektron.ubl.xml",
+      "upstream_file": "library/src/test/resources/XRECHNUNG_Elektron.ubl.xml",
+      "sha256": "845160bb74f71e6470b789c7b5bc79ec242d183e34451b23473f992073c2c980",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L229",
+          "method": "testDeserializedFiles"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/XRECHNUNG_Reisekostenabrechnung.ubl.xml",
+      "upstream_file": "library/src/test/resources/XRECHNUNG_Reisekostenabrechnung.ubl.xml",
+      "sha256": "557209369bf1d4a137e22973020795f55984f356d0c10c2879986c2e555fcdcc",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/XRechnung_internalRecalcBug.xml",
+      "upstream_file": "library/src/test/resources/XRechnung_internalRecalcBug.xml",
+      "sha256": "037a0e3510d560ee9f254dec09166d027c38a30e34365a00edef5204292b8815",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1074",
+          "method": "testRecalc"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L641",
+          "method": "testRecalc"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/01.01a-INVOICE.cii.xml",
+      "upstream_file": "library/src/test/resources/cii/01.01a-INVOICE.cii.xml",
+      "sha256": "8a7e2585629400a691276587814e6588854af746be788797a976d4f805640087",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L150",
+          "method": "testPDFVisualizationCII"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/02.03a-INVOICE_uncefact.xml",
+      "upstream_file": "library/src/test/resources/cii/02.03a-INVOICE_uncefact.xml",
+      "sha256": "90b68137ebc32bdff0f9afe9a0fdfd7943325f60983efcaec213be5f5f64c748",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L895",
+          "method": "testImportXRechnungWithoutCalculationErrors"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/Factur-X_basic.xml",
+      "upstream_file": "library/src/test/resources/cii/Factur-X_basic.xml",
+      "sha256": "b75c9744e76692d0d367c3832601685ac42b9e12d3c559d34c255b653168a5aa",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L915",
+          "method": "testImportExport"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/UC11_F202600022_EXTENDED_FX_CII_BT-X-589Only_on_GROUP_Line.xml",
+      "upstream_file": "library/src/test/resources/cii/UC11_F202600022_EXTENDED_FX_CII_BT-X-589Only_on_GROUP_Line.xml",
+      "sha256": "edd459212a6869b3a6835e4f1d04683e940330de9eaa8ab1251858d721c120ba",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L975",
+          "method": "testIssue275GroupLineTotalsWithOnlyDueDateTypeCode"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/bt17-response_1760553749128.cii.xml",
+      "upstream_file": "library/src/test/resources/cii/bt17-response_1760553749128.cii.xml",
+      "sha256": "41b841a5462a9436ed926fe444d7d8c2c2107b166af05d96110afe57906cb8f2",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L258",
+          "method": "testBT17InvoiceImport"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/extended_warenrechnung_based_doublecashdiscount.xml",
+      "upstream_file": "library/src/test/resources/cii/extended_warenrechnung_based_doublecashdiscount.xml",
+      "sha256": "43e6e5dc42d833b47360332ff0de9e1759d922310ac821c0a6e8dadd16437ca7",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L338",
+          "method": "testSpecifiedLogisticsChargeCashDiscountImport"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/facturFrMinimum.xml",
+      "upstream_file": "library/src/test/resources/cii/facturFrMinimum.xml",
+      "sha256": "784cb0e869e2b52bc6ee739c54f03fa83f91393b65e211714bca1503beda41b1",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:factur-x.eu:1p0:minimum"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L714",
+          "method": "testImportMinimum"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/lastschrift_iban_bug.xml",
+      "upstream_file": "library/src/test/resources/cii/lastschrift_iban_bug.xml",
+      "sha256": "f2462b6049bdf70c2b742ba650888af4943ab0acc9751299060ed3bd90f3985a",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L375",
+          "method": "testIBANImport"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/cii/minimalDebit.xml",
+      "upstream_file": "library/src/test/resources/cii/minimalDebit.xml",
+      "sha256": "8baee73c64881c896ea906b00c04f3f346b2c2728d05f2135fe78bff28693494",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L502",
+          "method": "testImportDebit"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/factur-x-extended.xml",
+      "upstream_file": "library/src/test/resources/factur-x-extended.xml",
+      "sha256": "a63bb55b739a5d23ba91cfcd4991c819df7e3058f12837c1da1d91c8ff757b50",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L57",
+          "method": "testCIIVisualizationExtended"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/factur-x.xml",
+      "upstream_file": "library/src/test/resources/factur-x.xml",
+      "sha256": "b2c843bfec9ddd6c94a7827247ea9deebbc7095429755c52df3c0c0dba55edbc",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L114",
+          "method": "testInvoiceLine"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/MustangReaderWriterTest.java#L453",
+          "method": "testFXExport"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/UBLTest.java#L69",
+          "method": "testUBLBasic"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L52",
+          "method": "testCIIVisualizationBasic"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L487",
+          "method": "testDetach"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/factur-x_invoicingPeriod.xml",
+      "upstream_file": "library/src/test/resources/factur-x_invoicingPeriod.xml",
+      "sha256": "57e9bfe43b673203989975569121ac054a0d9fecc8316b56ca62956d947ce6d7",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L861",
+          "method": "testItemsBillingSpecifiedPeriod"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/line-total-4-decimals.xml",
+      "upstream_file": "library/src/test/resources/line-total-4-decimals.xml",
+      "sha256": "487b49070ec86b052d537a5cff8a203c75574afeddd840f06fdabcb0fb0fb793",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2PushTest.java#L1481",
+          "method": "testLineTotalAmount"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/input/ZUGFeRD1-invoice-adjusted.xml",
+      "upstream_file": "library/src/test/resources/migration/input/ZUGFeRD1-invoice-adjusted.xml",
+      "sha256": "fcf667d374ba3d62b1fc0877b38604e57239865e8c9f5fd46126c2e3431a74e2",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:extended"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/input/ZUGFeRD1-invoice.xml",
+      "upstream_file": "library/src/test/resources/migration/input/ZUGFeRD1-invoice.xml",
+      "sha256": "89ab6da5fbc19e734c66717eca6bc650f92dbf6d2a3e7571755a969bbfcbfd98",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:extended"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/input/ZUGFeRD1_COMFORT_Einfach.xml",
+      "upstream_file": "library/src/test/resources/migration/input/ZUGFeRD1_COMFORT_Einfach.xml",
+      "sha256": "9f6f20f2568c0f00e1ba422bb33611a902ba1889e53c105205c01cd34b141c48",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:comfort"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/input/ZUGFeRD1_EXTENDED_Warenrechnung.xml",
+      "upstream_file": "library/src/test/resources/migration/input/ZUGFeRD1_EXTENDED_Warenrechnung.xml",
+      "sha256": "35db582c9cf57884c3af6309d2b97ceeb4024b11ec20bd2176974141bce23ff9",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:extended"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/reference/ZUGFeRD2-invoice-adjusted.xml",
+      "upstream_file": "library/src/test/resources/migration/reference/ZUGFeRD2-invoice-adjusted.xml",
+      "sha256": "d18a995504d1d1d9417aa8877915f8fd0f790074736a277de61c62a603ac106a",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/reference/ZUGFeRD2-invoice.xml",
+      "upstream_file": "library/src/test/resources/migration/reference/ZUGFeRD2-invoice.xml",
+      "sha256": "d0d8d4016e81e2023c233980bd3e9e2f8f61e2730c5f05459a3646a0b4a55f11",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/reference/ZUGFeRD2_COMFORT_Einfach.xml",
+      "upstream_file": "library/src/test/resources/migration/reference/ZUGFeRD2_COMFORT_Einfach.xml",
+      "sha256": "5582fef3a4aeb36472fd65de6c9acd17c6a5654ddb5386cb77950d062599b497",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/reference/ZUGFeRD2_EXTENDED_Warenrechnung.xml",
+      "upstream_file": "library/src/test/resources/migration/reference/ZUGFeRD2_EXTENDED_Warenrechnung.xml",
+      "sha256": "4833cff35bfb5346d6a79729fd54e4aeac9ff9742634345a78943ee19b307793",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1221",
+          "method": "testApplicableProductCharacteristic"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/multiple-payment-means.cii.xml",
+      "upstream_file": "library/src/test/resources/multiple-payment-means.cii.xml",
+      "sha256": "98d67362b54673066545925211a3bec91c19f5ff9d164992b824dad77dbd2eb5",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L62",
+          "method": "testCIIVisualizationMultiplePaymentMeansBIC"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.cii.xml",
+      "upstream_file": "library/src/test/resources/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.cii.xml",
+      "sha256": "e0144fd8c503df097f97cd4615dbc2160feac1f167270fce7ff60e7eec667a37",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L339",
+          "method": "testFull300Roundtrip"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.ubl.xml",
+      "upstream_file": "library/src/test/resources/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.ubl.xml",
+      "sha256": "7ddd1d12228a079fd1301adb996f8fae4efdea6fd5f77628178dd4779c45b157",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/subinvoicelines/Extended_Fallschutz-Set_SubInvoiceLine_Bsp5.xml",
+      "upstream_file": "library/src/test/resources/subinvoicelines/Extended_Fallschutz-Set_SubInvoiceLine_Bsp5.xml",
+      "sha256": "fb06881dd37710a186ebce6dedfc84fc755a5eb842e359314c2d131f73a60a9e",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1046",
+          "method": "testSubInvoiceLinesInformation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/subinvoicelines/Extended_SubInvoiceLines_Hardware_Bsp2.xml",
+      "upstream_file": "library/src/test/resources/subinvoicelines/Extended_SubInvoiceLines_Hardware_Bsp2.xml",
+      "sha256": "a552c3f7b92583e0988cf805bac70167bdcfcea4f39c16306a0ccfdc9de1d6db",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L936",
+          "method": "testSubInvoiceLinesImport"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/subinvoicelines/Extended___SubInvoiceLines_Buero_Material_Bsp3__.xml",
+      "upstream_file": "library/src/test/resources/subinvoicelines/Extended___SubInvoiceLines_Buero_Material_Bsp3__.xml",
+      "sha256": "4a818498ddd5d44a492588e1e038c6f72a716afdc8d518433e387ac670de8a5b",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1029",
+          "method": "testSubInvoiceLinesWithDiscounts"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/subinvoicelines/Extended___SubInvoiceLines_Kaffee_Bundle_Set_Bsp4__.xml",
+      "upstream_file": "library/src/test/resources/subinvoicelines/Extended___SubInvoiceLines_Kaffee_Bundle_Set_Bsp4__.xml",
+      "sha256": "5801f2b85ef06b73b4c66211782e336c943dc3fc669ba2c160b0493cd5b16494",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L999",
+          "method": "testSubInvoiceLinesNestedImport"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/subinvoicelines/ZUGFeRD_Extended__Abschlagsrechnung_SubInvoiceLine_u_LV_Nr_.xml",
+      "upstream_file": "library/src/test/resources/subinvoicelines/ZUGFeRD_Extended__Abschlagsrechnung_SubInvoiceLine_u_LV_Nr_.xml",
+      "sha256": "57e998377a1e0dcfbbe689bb4938583e4a1815cce36df580b35ae7c6a0b46217",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/subinvoicelines/invalidSubInvoiceLineHierarchy.xml",
+      "upstream_file": "library/src/test/resources/subinvoicelines/invalidSubInvoiceLineHierarchy.xml",
+      "sha256": "6ed6324910a2279ea0fdd30eb7474f2057f8d366200468a753dfb35a35ed9503",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L575",
+          "method": "testSubInvoiceLineHierarchy"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/testContractReferencedDocument.xml",
+      "upstream_file": "library/src/test/resources/testContractReferencedDocument.xml",
+      "sha256": "9b6e4f7ee63ac3d953d647d94b7bdcda339e67f9fd3f9e9d72aae347693749b9",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1181",
+          "method": "testContractReferencedDocument"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/test_invoice_contract.xml",
+      "upstream_file": "library/src/test/resources/test_invoice_contract.xml",
+      "sha256": "3ab6ddef498b60d87c91dd18984cc615871b2bf16dcb229042975c80e8decd82",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1204",
+          "method": "testInvoiceContract"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/test_invoice_note.xml",
+      "upstream_file": "library/src/test/resources/test_invoice_note.xml",
+      "sha256": "40bbcf12cd849ed2cdb60a388e33612363a25231b449b4920c6ca45f19ca170c",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1162",
+          "method": "testInvoiceNotes"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/testout-MustangGnuaccountingBeispielRE-20171118_506fx.ubl.xml",
+      "upstream_file": "library/src/test/resources/testout-MustangGnuaccountingBeispielRE-20171118_506fx.ubl.xml",
+      "sha256": "6e2e72ac8e2170f177e04c920e1d60942b809736a77fa19d246c71480bed29e1",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/testout-XR-Edge.ubl.xml",
+      "upstream_file": "library/src/test/resources/testout-XR-Edge.ubl.xml",
+      "sha256": "6c9e68b345e4129bf87925998683362534f07faea68f7dc797bb2cee94a2e50e",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/testout-ZF2PushAllowances.ubl.xml",
+      "upstream_file": "library/src/test/resources/testout-ZF2PushAllowances.ubl.xml",
+      "sha256": "fa3c369e20e5c0261ca97bf8432d8ceb22de717f4d22690b9c4e73f1f3856821",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/testout-ZF2PushEdge.ubl.xml",
+      "upstream_file": "library/src/test/resources/testout-ZF2PushEdge.ubl.xml",
+      "sha256": "6f7abd831a08a62c98a254b2aaa41d1bfe366e7dc458ee7ed2ad258f952d0bb9",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/testout-ZF2PushItemChargesAllowances.ubl.xml",
+      "upstream_file": "library/src/test/resources/testout-ZF2PushItemChargesAllowances.ubl.xml",
+      "sha256": "46a52e229ac2c002ca41374c7c3d15ca027c2453012464d0d8b6f6de331d11b5",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/testout-ZF2new.ubl.xml",
+      "upstream_file": "library/src/test/resources/testout-ZF2new.ubl.xml",
+      "sha256": "41704f96cefbeae1eddbf4f6817eff7ff795c35fff9e346566c481467e2c3571",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L134",
+          "method": "testInvoiceImportUBL"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/testout-ZF2newEdge.ubl.xml",
+      "upstream_file": "library/src/test/resources/testout-ZF2newEdge.ubl.xml",
+      "sha256": "e249c912157b0ff009bcd437f52954470231381b28a9f23b42d3f455efb1d977",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl-conv-ubl-output-factur-x.xml",
+      "upstream_file": "library/src/test/resources/ubl-conv-ubl-output-factur-x.xml",
+      "sha256": "0c9ee988d392254aa6e69d529c59119aedddd76502225f6fec601b63bdceab3b",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/UBLTest.java#L71",
+          "method": "testUBLBasic"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl-creditnote.xml",
+      "upstream_file": "library/src/test/resources/ubl-creditnote.xml",
+      "sha256": "7bf3071f094ff17f5b4fa4d751895e6c8b3d1033d0e76d52b6ac55f3af36ab43",
+      "root": "CreditNote",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote",
+      "guideline_ids": [],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L94",
+          "method": "testUBLCreditNoteVisualizationBasic"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl-selfbilled-01.20a-INVOICE_ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl-selfbilled-01.20a-INVOICE_ubl.xml",
+      "sha256": "8459507eaedfa386ba17f5b8dba45d86e5097543abcb0bad6d6ad2e098fdfe82",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/01.01a-INVOICE.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/01.01a-INVOICE.ubl.xml",
+      "sha256": "3558d8eee6499350f69c150b54b4019556458667cfc972beaa9bb7bf1e11303f",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/UBLTest.java#L118",
+          "method": "testEdgeInvoiceImportUBL"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L99",
+          "method": "testUBLVisualizationBasic"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/04.01a-INVOICE_ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/04.01a-INVOICE_ubl.xml",
+      "sha256": "37cf932716fa9ca988a49b06e766dcee99b32cda7ccf452f8a936a5465148e7c",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2#conformant#urn:xoev-de:kosit:extension:xrechnung_2.2"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/UBLTest.java#L140",
+          "method": "testEdgeInvoiceImportUBL2"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/BT-128.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/BT-128.ubl.xml",
+      "sha256": "9cd9181bc9e697daafd64f25a8939cd8bff43b475f5b6ba88355dbcffc868704",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L276",
+          "method": "testBT128InvoiceImport"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/UBL-CreditNote-2.1-Example.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/UBL-CreditNote-2.1-Example.ubl.xml",
+      "sha256": "c09ed4bfeac06e44937bafbfd852fdf1c267815acdbd16be619b6383ede803b7",
+      "root": "CreditNote",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote",
+      "guideline_ids": [],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L236",
+          "method": "testPDFVisualizationUBLCreditNote"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L731",
+          "method": "testImportUBLCreditnote"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_Betriebskostenabrechnung.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/XRECHNUNG_Betriebskostenabrechnung.ubl.xml",
+      "sha256": "c78fb20370f26fffc590e0be01bdb161e63dd6e7d8153fc26e964f631ce15a40",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_Einfach.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/XRECHNUNG_Einfach.ubl.xml",
+      "sha256": "221dbdc9d7a209881a5c27376b56e56e236182f06c11e085916b482bfe362408",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_Elektron.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/XRECHNUNG_Elektron.ubl.xml",
+      "sha256": "7cfac8386f8580a6379201d51b9f36d91a4c3d481c5321b6692a6973685d1008",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L229",
+          "method": "testDeserializedFiles"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_Reisekostenabrechnung.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/XRECHNUNG_Reisekostenabrechnung.ubl.xml",
+      "sha256": "9258a548962846e28a9ddd905835ab4903a8ef6dec5ee65cd6a8e15582df4894",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_teilrechnung.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/XRECHNUNG_teilrechnung.ubl.xml",
+      "sha256": "d8ecf72a97439bdc39076af5488b4785d7152bb66a3e399b052e04b0a0bbb09a",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.ubl.xml",
+      "sha256": "6f490687f73fad17459c78c69cb2bd48cc9d69d3de44f400da6566d2ad410b7c",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/library/src/test/resources/ubl/periods.ubl.xml",
+      "upstream_file": "library/src/test/resources/ubl/periods.ubl.xml",
+      "sha256": "f93f93e44146e48fa3f42ae4cc7a1eedaeb333c4181f05dd7f64e9253bed814c",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L750",
+          "method": "testImportUBLPeriods"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/01.01a-INVOICE_ubl.xml",
+      "upstream_file": "validator/src/test/resources/01.01a-INVOICE_ubl.xml",
+      "sha256": "0f5439b43c1dcb487fc7b800deb3cde074ed701181acc36bdd27937250eb82e5",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L412",
+          "method": "testXRValidationUBL"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/01.01a-INVOICE_uncefact.xml",
+      "upstream_file": "validator/src/test/resources/01.01a-INVOICE_uncefact.xml",
+      "sha256": "70c871f78abaf8362ee0f6907d105bfa1e8e2af9e0972856200d3e433737498b",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L432",
+          "method": "testXRValidationUNCEFACT"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/CII_XRechnung_with_Peppol_violation.xml",
+      "upstream_file": "validator/src/test/resources/CII_XRechnung_with_Peppol_violation.xml",
+      "sha256": "53f03f48d1f24931d4c0ff312e19247ce63274f4ae088f58af7aa93d5493e74f",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L235",
+          "method": "testXRCIIPeppolFailureValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/EN16931_Einfach.ubl.xml",
+      "upstream_file": "validator/src/test/resources/EN16931_Einfach.ubl.xml",
+      "sha256": "bc3b025720c6007114a4f67da35dad39f2d3de8890ed79e130ccef0d9c2cb727",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L501",
+          "method": "testUBLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/FAIL_zugferd_2p1_MINIMUM_Rechnung_380.xml",
+      "upstream_file": "validator/src/test/resources/FAIL_zugferd_2p1_MINIMUM_Rechnung_380.xml",
+      "sha256": "9298fedd1508b39e1a3ad61890ebfae6e9887b3e4b1904392b193543bdf45504",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:factur-x.eu:1p0:minimum"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L95",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/UC10_F202600004_EXTENDED_FX_CII_Commentee.xml",
+      "upstream_file": "validator/src/test/resources/UC10_F202600004_EXTENDED_FX_CII_Commentee.xml",
+      "sha256": "2a2040b92347625a829504dee1cc51da92bbf0280439457317f59ea013d87009",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/X03_01_Abschlagsrechnung_SubInvoiceLine_u_LV_Nr.xml",
+      "upstream_file": "validator/src/test/resources/X03_01_Abschlagsrechnung_SubInvoiceLine_u_LV_Nr.xml",
+      "sha256": "28ff0711c3163193b56b427be6b1fe1d41aa5e6f4a90996fd7b596d749aeeb57",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L591",
+          "method": "testSubInvoiceLineHierarchy"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/XRechnung_internalRecalcBug.xml",
+      "upstream_file": "validator/src/test/resources/XRechnung_internalRecalcBug.xml",
+      "sha256": "037a0e3510d560ee9f254dec09166d027c38a30e34365a00edef5204292b8815",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1074",
+          "method": "testRecalc"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L641",
+          "method": "testRecalc"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/ZUGFeRD-invoice_rabatte_3_abschlag_duepayableamount.xml",
+      "upstream_file": "validator/src/test/resources/ZUGFeRD-invoice_rabatte_3_abschlag_duepayableamount.xml",
+      "sha256": "03b3514916660177130de8fda824d841fd158ffa37e17f970e18c1d2ae8526d1",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L144",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/ZUGFeRD-invoice_rabatte_4_abschlag_taxbasistotalamount.xml",
+      "upstream_file": "validator/src/test/resources/ZUGFeRD-invoice_rabatte_4_abschlag_taxbasistotalamount.xml",
+      "sha256": "10c4a1b72e02bde04d0c6cb00cf185ad42ec891665d4c1e71f1ce07dde9d6f01",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L164",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/attributeBasedXMP_zugferd_2p0_EN16931_Einfach_corrected.xml",
+      "upstream_file": "validator/src/test/resources/attributeBasedXMP_zugferd_2p0_EN16931_Einfach_corrected.xml",
+      "sha256": "0d93fa381481688217fe751ad0ab1a6af7a372bd8408a7669a532fe52dc8daa1",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L170",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidArithmetics.xml",
+      "upstream_file": "validator/src/test/resources/invalidArithmetics.xml",
+      "sha256": "051a75340f4a651f9da42319ff86a3e04a2308c34a0c47bbbd60e821a906b9b2",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L357",
+          "method": "testArithmetics"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidSubInvoiceLineHierarchy.xml",
+      "upstream_file": "validator/src/test/resources/invalidSubInvoiceLineHierarchy.xml",
+      "sha256": "6ed6324910a2279ea0fdd30eb7474f2057f8d366200468a753dfb35a35ed9503",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L575",
+          "method": "testSubInvoiceLineHierarchy"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV1.xml",
+      "upstream_file": "validator/src/test/resources/invalidV1.xml",
+      "sha256": "d2f78290a04b9ee20067046368b0dc2780d8f3ffba86de140bcc2656e594fe98",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:extended"
+      ],
+      "upstream_tests": []
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV1ExtraTags.xml",
+      "upstream_file": "validator/src/test/resources/invalidV1ExtraTags.xml",
+      "sha256": "5b806af74a8b0f972701335cf4635d9f23086c501db8afc4ce0f55cc6958df17",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L212",
+          "method": "testZF1XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV1TooMinimal.xml",
+      "upstream_file": "validator/src/test/resources/invalidV1TooMinimal.xml",
+      "sha256": "7408129966d1c5063e0d18e75778a9c599b9b5acf7746452e1e7d05f6030fbca",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L217",
+          "method": "testZF1XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV1addition.xml",
+      "upstream_file": "validator/src/test/resources/invalidV1addition.xml",
+      "sha256": "c9db6f74275a8d69749891a6327ca4c4a94f842ff454c77bd935535bbfccd0e3",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:comfort"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L159",
+          "method": "testV1XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV2.xml",
+      "upstream_file": "validator/src/test/resources/invalidV2.xml",
+      "sha256": "9433726cdb907442712615e7305fa9b6260e4c617b59fbcae8da54fc68e0b2fa",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017:compliant:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L38",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV2Profile.xml",
+      "upstream_file": "validator/src/test/resources/invalidV2Profile.xml",
+      "sha256": "ae8d7528ea13840a0a8c8403869e20ac8594bdbaba18320c7efc54ed3346d460",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:comfort"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L81",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidXRSchemav2.xml",
+      "upstream_file": "validator/src/test/resources/invalidXRSchemav2.xml",
+      "sha256": "9525dc8dfaa42f0950a7915602c026a37cefccded7f2792046f595ea720d6de9",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L336",
+          "method": "testXRSchemaValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidXRV30.xml",
+      "upstream_file": "validator/src/test/resources/invalidXRV30.xml",
+      "sha256": "c4b71c2027daa0261501c411e9665134ebf75564e02900d1d47d07ad73b07bcf",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L826",
+          "method": "testCIIAfterUBLWithClearedContext"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L223",
+          "method": "testXR30Validation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidXRV30_BR-DEC-23.xml",
+      "upstream_file": "validator/src/test/resources/invalidXRV30_BR-DEC-23.xml",
+      "sha256": "cc286cd46314fefea2faa66cf736253c036bbfbf3a4c6056b4cba5fb43e20ca9",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L545",
+          "method": "testBRDEC23Regression"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidXRv2.xml",
+      "upstream_file": "validator/src/test/resources/invalidXRv2.xml",
+      "sha256": "3beab2b1ae945860c86a3c1f1e1e10c6f846fd4da8097e3ee524cdbcf860fd69",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L274",
+          "method": "testXRValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/roundingDifferenceIsInTolerance.xml",
+      "upstream_file": "validator/src/test/resources/roundingDifferenceIsInTolerance.xml",
+      "sha256": "1dcd7d3a9ddb00b99817bea5304b4f8ec369b6df8ff825f96b40281082d9e80a",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L612",
+          "method": "testRoundingDifferenceIsInTolerance"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L379",
+          "method": "testSchematronExceptionIsInvalid"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/ubl-tc434-creditnote1.xml",
+      "upstream_file": "validator/src/test/resources/ubl-tc434-creditnote1.xml",
+      "sha256": "911d7ac2cb4fa72d21331c76914468e7d94eda03629e0def75c64ab18e3e9dce",
+      "root": "CreditNote",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L516",
+          "method": "testUBLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validV1.xml",
+      "upstream_file": "validator/src/test/resources/validV1.xml",
+      "sha256": "fa15fdcb4a65668aa29202e6e53c6229ad7c3ecb2ccbcdfd9660d03f8ed79ad5",
+      "root": "CrossIndustryDocument",
+      "namespace": "{urn:ferd:CrossIndustryDocument:invoice:1p0}CrossIndustryDocument",
+      "guideline_ids": [
+        "urn:ferd:CrossIndustryDocument:invoice:1p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L206",
+          "method": "testZF1XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validV2.xml",
+      "upstream_file": "validator/src/test/resources/validV2.xml",
+      "sha256": "2520a5b20565fabd9deaf313bda093921dc111033016a2a85c0f78a4f68c05d6",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ValidationReportSchemaTest.java#L32",
+          "method": "loadSchema"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L253",
+          "method": "testXMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validV2Basic.xml",
+      "upstream_file": "validator/src/test/resources/validV2Basic.xml",
+      "sha256": "53d990e38f07a28c49c8e7f8a691db7add4233c4ade92b945876796f5e2792a7",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L134",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validV2FR.xml",
+      "upstream_file": "validator/src/test/resources/validV2FR.xml",
+      "sha256": "da390d45476986859980c5623280c8255d37aa4d383fda99292340d0c2b7604e",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn.cpro.gouv.fr:1p0:extended-ctc-fr"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L469",
+          "method": "testFrenchSchematronValidation"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L278",
+          "method": "testXMLFRValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validXRV23.xml",
+      "upstream_file": "validator/src/test/resources/validXRV23.xml",
+      "sha256": "3ea06614b7d26325231abe1832b3b81541462b41eef1ee52d12815abe8985c55",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L179",
+          "method": "testXR23Validation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validXRV30.xml",
+      "upstream_file": "validator/src/test/resources/validXRV30.xml",
+      "sha256": "bb8b84490f70bfdad52063dbef2f726fe3d7352835656a3e9855698ca3ecb978",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L205",
+          "method": "testXR30Validation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validXRv2.xml",
+      "upstream_file": "validator/src/test/resources/validXRv2.xml",
+      "sha256": "13093d875a2997c8f88838b57d1bf531d8bc288749ea1e8bdbe9df5c6ad17358",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L265",
+          "method": "testXRValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validZREtestZugferd.xml",
+      "upstream_file": "validator/src/test/resources/validZREtestZugferd.xml",
+      "sha256": "c5a7d53dce25256d4bbbeb5defb1f23e7103cbed04421ed03588c5476d4b7433",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L176",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/valid_Avoir_FR_type380_minimum_factur-x.xml",
+      "upstream_file": "validator/src/test/resources/valid_Avoir_FR_type380_minimum_factur-x.xml",
+      "sha256": "294c779ade6bb304ccbc76150c37e52f63eb17b7669b7253d4812fddd026bde6",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:factur-x.eu:1p0:minimum"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L150",
+          "method": "testZF2XMLValidation"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/valid_with_VAT_O.xml",
+      "upstream_file": "validator/src/test/resources/valid_with_VAT_O.xml",
+      "sha256": "75d612f96bc53b6375712f2b8b45b9aa791e6246b8e20fdbdb33aedcb58788ba",
+      "root": "CrossIndustryInvoice",
+      "namespace": "{urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100}CrossIndustryInvoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L662",
+          "method": "testVAT_O"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L303",
+          "method": "testVAT_O"
+        }
+      ]
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/xrechnung-ubl.xml",
+      "upstream_file": "validator/src/test/resources/xrechnung-ubl.xml",
+      "sha256": "bdf71868db7892512f31c817ec92f58e7b08fbf62a32f14fd6992395971842ba",
+      "root": "Invoice",
+      "namespace": "{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice",
+      "guideline_ids": [
+        "urn:cen.eu:en16931:2017"
+      ],
+      "upstream_tests": [
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L836",
+          "method": "testCIIAfterUBLWithClearedContext"
+        },
+        {
+          "url": "https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L318",
+          "method": "testReusedValidatorAfterUBL"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "files": 98,
+    "byte_unique": 96,
+    "modern_cases": 89,
+    "legacy_exclusions": 9,
+    "expected_status": {
+      "200": 44,
+      "406": 45
+    }
+  }
+}

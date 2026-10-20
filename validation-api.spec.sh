@@ -229,11 +229,11 @@ test_factur_x_canaries() {
 
   if ! is_valid_file "$warning_fixture"; then
     failed=true
-  elif ! grep -Fq 'code="FX-SCH-A-000372"' <<< "$RESPONSE_BODY"; then
-    echo '❌ FAILED: Factur-X warning did not retain code FX-SCH-A-000372' >&2
+  elif ! grep -Fq 'code="PEPPOL-EN16931-R008"' <<< "$RESPONSE_BODY"; then
+    echo '❌ FAILED: Factur-X warning did not retain code PEPPOL-EN16931-R008' >&2
     failed=true
   else
-    echo '✅ Warning-only EN16931 invoice returns HTTP 200 with FX-SCH-A-000372'
+    echo '✅ Warning-only EN16931 invoice returns HTTP 200 with PEPPOL-EN16931-R008'
   fi
 
   if [[ $(grep -Foc "$original" "$basic_fixture") -ne 1 ]]; then
@@ -244,11 +244,11 @@ test_factur_x_canaries() {
     sed "s#$original#$replacement#" "$basic_fixture" > "$invalid_fixture"
     if ! is_invalid_file "$invalid_fixture"; then
       failed=true
-    elif ! grep -Fq 'code="FX-SCH-A-000122"' <<< "$RESPONSE_BODY"; then
-      echo '❌ FAILED: Factur-X error did not retain code FX-SCH-A-000122' >&2
+    elif ! grep -Fq 'code="BR-CO-16"' <<< "$RESPONSE_BODY"; then
+      echo '❌ FAILED: Factur-X error did not retain code BR-CO-16' >&2
       failed=true
     else
-      echo '✅ Invalid BASIC amount returns HTTP 406 with FX-SCH-A-000122'
+      echo '✅ Invalid BASIC amount returns HTTP 406 with BR-CO-16'
     fi
     rm -f "$invalid_fixture"
   fi
@@ -259,7 +259,7 @@ test_factur_x_canaries() {
       failed=true
     elif ! is_valid_file "$FACTUR_X_X20_CANARY"; then
       failed=true
-    elif grep -Eq 'code="FX-SCH-A-000(379|380|412)"' <<< "$RESPONSE_BODY"; then
+    elif grep -Eq 'code="BR-FXEXT-S-08(ini|rev|b)"' <<< "$RESPONSE_BODY"; then
       echo '❌ FAILED: X20 regression rule was reported' >&2
       failed=true
     else
@@ -269,6 +269,133 @@ test_factur_x_canaries() {
     echo 'ℹ️  Optional X20 runtime canary skipped; set FACTUR_X_X20_CANARY to its local XML path.'
   fi
 
+  echo ''
+  ! $failed
+}
+
+test_en16931_canaries() {
+  local fixture_dir
+  local cii_fixture='./test-data/invalid-files/factur-x-1.07.2/5. XRECHNUNG/XRECHNUNG_Einfach/xrechnung.xml'
+  local failed=false
+  local check
+  local fixture
+  local rule
+  fixture_dir=$(mktemp -d) || return 1
+
+  echo '⏳ Testing updated EN16931 rules for generic UBL and XRechnung CII...'
+  if ! python3 - "$fixture_dir" <<'PY'
+import copy
+import sys
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+ns = {
+    'cac': 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2',
+    'cbc': 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2',
+    'ram': 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100',
+}
+source = Path('test-data/valid-files/xrechnung-3.0.2/standard/01.01a-INVOICE_ubl.xml')
+target = Path(sys.argv[1])
+root = ET.parse(source).getroot()
+root.find('cbc:CustomizationID', ns).text = 'urn:cen.eu:en16931:2017'
+ET.ElementTree(root).write(target / 'generic.xml', encoding='utf-8', xml_declaration=True)
+
+invalid_vat = copy.deepcopy(root)
+vat = invalid_vat.find('cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID', ns)
+vat.text = 'A'
+ET.ElementTree(invalid_vat).write(target / 'vat-prefix.xml', encoding='utf-8', xml_declaration=True)
+
+duplicate_legal_entity = copy.deepcopy(root)
+supplier = duplicate_legal_entity.find('cac:AccountingSupplierParty/cac:Party', ns)
+legal_entity = supplier.find('cac:PartyLegalEntity', ns)
+supplier.insert(list(supplier).index(legal_entity) + 1, ET.Element(legal_entity.tag))
+ET.ElementTree(duplicate_legal_entity).write(target / 'legal-entity.xml', encoding='utf-8', xml_declaration=True)
+
+credit_note = copy.deepcopy(root)
+credit_note.tag = '{urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote'
+renamed_tags = {
+    f'{{{ns["cac"]}}}InvoiceLine': f'{{{ns["cac"]}}}CreditNoteLine',
+    f'{{{ns["cbc"]}}}InvoicedQuantity': f'{{{ns["cbc"]}}}CreditedQuantity',
+    f'{{{ns["cbc"]}}}InvoiceTypeCode': f'{{{ns["cbc"]}}}CreditNoteTypeCode',
+}
+for element in credit_note.iter():
+    element.tag = renamed_tags.get(element.tag, element.tag)
+credit_note.find('cbc:CreditNoteTypeCode', ns).text = '381'
+ET.ElementTree(credit_note).write(target / 'credit-note.xml', encoding='utf-8', xml_declaration=True)
+
+for base, name, prefix in ((root, 'greek-el-invoice', 'EL'),
+                           (credit_note, 'greek-el-credit-note', 'EL'),
+                           (root, 'greek-gr-invoice', 'GR')):
+    greek = copy.deepcopy(base)
+    seller = greek.find('cac:AccountingSupplierParty/cac:Party', ns)
+    seller.find('cac:PartyTaxScheme/cbc:CompanyID', ns).text = prefix + '123456789'
+    seller.find('cac:PostalAddress/cac:Country/cbc:IdentificationCode', ns).text = 'GR'
+    ET.ElementTree(greek).write(target / (name + '.xml'), encoding='utf-8', xml_declaration=True)
+
+cii_source = Path('test-data/invalid-files/factur-x-1.07.2/5. XRECHNUNG/XRECHNUNG_Einfach/xrechnung.xml')
+cii_root = ET.parse(cii_source).getroot()
+contact = cii_root.find('.//ram:SellerTradeParty/ram:DefinedTradeContact', ns)
+contact.remove(contact.find('ram:DepartmentName', ns))
+ET.ElementTree(cii_root).write(target / 'cii-contact.xml', encoding='utf-8', xml_declaration=True)
+PY
+  then
+    rm -f "$fixture_dir/"*.xml
+    rmdir "$fixture_dir"
+    return 1
+  fi
+
+  if ! is_valid_file "$fixture_dir/generic.xml"; then
+    failed=true
+  else
+    echo '✅ Generic UBL invoice is accepted'
+  fi
+
+  if ! is_valid_file "$fixture_dir/credit-note.xml"; then
+    failed=true
+  else
+    echo '✅ Generic UBL credit note is accepted'
+  fi
+
+  for fixture in greek-el-invoice greek-el-credit-note greek-gr-invoice; do
+    if ! is_valid_file "$fixture_dir/$fixture.xml"; then
+      failed=true
+    elif grep -Fq 'code="BR-CO-09"' <<< "$RESPONSE_BODY"; then
+      echo "❌ FAILED: Allowed Greek VAT prefix reported BR-CO-09 in $fixture" >&2
+      failed=true
+    else
+      echo "✅ Allowed Greek VAT prefix is accepted in $fixture"
+    fi
+  done
+
+  for check in 'vat-prefix.xml|BR-CO-09' 'legal-entity.xml|UBL-SR-57'; do
+    IFS='|' read -r fixture rule <<< "$check"
+    if ! is_invalid_file "$fixture_dir/$fixture"; then
+      failed=true
+    elif ! grep -Fq "code=\"$rule\"" <<< "$RESPONSE_BODY"; then
+      echo "❌ FAILED: Expected EN16931 rule $rule was not reported" >&2
+      failed=true
+    else
+      echo "✅ Generic UBL regression is rejected with $rule"
+    fi
+  done
+
+  if ! is_invalid_file "$cii_fixture"; then
+    failed=true
+  elif ! grep -Fq 'code="CII-SR-465"' <<< "$RESPONSE_BODY"; then
+    echo '❌ FAILED: Duplicate XRechnung seller contact did not report CII-SR-465' >&2
+    failed=true
+  else
+    echo '✅ Duplicate XRechnung seller contact is rejected with CII-SR-465'
+  fi
+
+  if ! is_valid_file "$fixture_dir/cii-contact.xml"; then
+    failed=true
+  else
+    echo '✅ XRechnung seller contact is accepted after removing the duplicate field'
+  fi
+
+  rm -f "$fixture_dir/"*.xml
+  rmdir "$fixture_dir"
   echo ''
   ! $failed
 }
@@ -293,11 +420,25 @@ else
   canary_result=1
 fi
 
+if test_en16931_canaries; then
+  en16931_result=0
+else
+  en16931_result=1
+fi
+
+if python3 ./scripts/test-upstream-api.py --api-url "$API_URL"; then
+  upstream_result=0
+else
+  upstream_result=1
+fi
+
 echo '🔍 Test Summary:'
 echo "   Valid files test: $([[ $valid_result -eq 0 ]] && echo '✅ PASSED' || echo '❌ FAILED')"
 echo "   Invalid files test: $([[ $invalid_result -eq 0 ]] && echo '✅ PASSED' || echo '❌ FAILED')"
 echo "   Factur-X canaries: $([[ $canary_result -eq 0 ]] && echo '✅ PASSED' || echo '❌ FAILED')"
+echo "   EN16931 canaries: $([[ $en16931_result -eq 0 ]] && echo '✅ PASSED' || echo '❌ FAILED')"
+echo "   Upstream API corpus: $([[ $upstream_result -eq 0 ]] && echo '✅ PASSED' || echo '❌ FAILED')"
 
-if ((valid_result != 0 || invalid_result != 0 || canary_result != 0)); then
+if ((valid_result != 0 || invalid_result != 0 || canary_result != 0 || en16931_result != 0 || upstream_result != 0)); then
   exit 1
 fi

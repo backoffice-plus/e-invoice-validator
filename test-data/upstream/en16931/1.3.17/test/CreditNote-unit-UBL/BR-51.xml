@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed under European Union Public Licence (EUPL) version 1.2.
+
+-->
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="tc434-ubl">
+	<assert>
+		<scope>BR-51</scope>
+	</assert>
+	<test>
+		<assert>
+			<description>Verify that less than 10 digits is given in the card number</description>
+			<success>BR-51</success>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cac:PaymentMeans>
+				<cac:CardAccount>
+					<cbc:PrimaryAccountNumberID>12345</cbc:PrimaryAccountNumberID>
+				</cac:CardAccount>
+			</cac:PaymentMeans>
+		</CreditNote>
+	</test>
+
+	<test>
+		<assert>
+			<description>Trigger error if more than 10 digits is given in the card number</description>
+			<warning>BR-51</warning>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cac:PaymentMeans>
+				<cac:CardAccount>
+					<cbc:PrimaryAccountNumberID>12345678901</cbc:PrimaryAccountNumberID>
+				</cac:CardAccount>
+			</cac:PaymentMeans>
+		</CreditNote>
+	</test>
+	
+</testSet>

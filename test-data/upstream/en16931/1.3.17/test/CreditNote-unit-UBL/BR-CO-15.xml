@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed under European Union Public Licence (EUPL) version 1.2.
+
+-->
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="tc434-ubl">
+	<assert>
+		<scope>BR-CO-15</scope>
+	</assert>
+	<test>
+		<assert>
+			<description>Verify that CreditNote total amount with VAT = CreditNote total amount without VAT + CreditNote total VAT amount.</description>
+			<success>BR-CO-15</success>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="NOK">300</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxExclusiveAmount currencyID="NOK">1000</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="NOK">1300</cbc:TaxInclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</CreditNote>
+	</test>
+
+	<test>
+		<assert>
+			<description>Verify that CreditNote total amount with VAT = CreditNote total amount without VAT + CreditNote total VAT amount.</description>
+			<success>BR-CO-15</success>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="NOK">300</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxExclusiveAmount currencyID="NOK">-100</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="NOK">200</cbc:TaxInclusiveAmount>
+			</cac:LegalMonetaryTotal>
+			
+		</CreditNote>
+	</test>
+	<test>
+		<assert>
+			<description>Verify that CreditNote total amount with VAT = CreditNote total amount without VAT + CreditNote total VAT amount.</description>
+			<success>BR-CO-15</success>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="NOK">100</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxExclusiveAmount currencyID="NOK">-100</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="NOK">0.0</cbc:TaxInclusiveAmount>
+			</cac:LegalMonetaryTotal>
+			
+		</CreditNote>
+	</test>
+	<test>
+		<assert>
+			<description>Verify that CreditNote total amount with VAT = CreditNote total amount without VAT + CreditNote total VAT amount.</description>
+			<success>BR-CO-15</success>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			<cbc:TaxCurrencyCode>NOK</cbc:TaxCurrencyCode>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="NOK">0</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxExclusiveAmount currencyID="NOK">0.00</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="NOK">0.0</cbc:TaxInclusiveAmount>
+			</cac:LegalMonetaryTotal>
+			
+		</CreditNote>
+	</test>
+
+	<test>
+		<assert>
+			<description>Trigger error if CreditNote total amount with VAT != CreditNote total amount without VAT + CreditNote total VAT amount</description>
+			<error>BR-CO-15</error>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="NOK">250</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxExclusiveAmount currencyID="NOK">1000.00</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="NOK">1250.01</cbc:TaxInclusiveAmount>
+			</cac:LegalMonetaryTotal>
+		</CreditNote>
+	</test>
+	
+	
+	<test>
+		<assert>
+			<description>Trigger error if CreditNote total amount with VAT != CreditNote total amount without VAT + CreditNote total VAT amount</description>
+			<error>BR-CO-15</error>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="NOK">0</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxExclusiveAmount currencyID="NOK">1000.00</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="NOK">1250.00</cbc:TaxInclusiveAmount>
+			</cac:LegalMonetaryTotal>
+		</CreditNote>
+	</test>
+	
+	<test>
+		<assert>
+			<description>Trigger error if CreditNote total amount with VAT != CreditNote total amount without VAT + CreditNote total VAT amount</description>
+			<error>BR-CO-15</error>
+		</assert>
+		<CreditNote
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="NOK">100</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxExclusiveAmount currencyID="NOK">-100.00</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="NOK">0.01</cbc:TaxInclusiveAmount>
+			</cac:LegalMonetaryTotal>
+		</CreditNote>
+	</test>
+
+  <test>
+    <assert>
+      <description>Trigger error if different tax amounts of the same currency are available</description>
+      <error>BR-CO-15</error>
+    </assert>
+    <CreditNote
+        xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+        xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+        xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+      <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+      <cac:TaxTotal>
+          <cbc:TaxAmount currencyID="EUR">700.00</cbc:TaxAmount>
+      </cac:TaxTotal>
+      <cac:TaxTotal>
+          <cbc:TaxAmount currencyID="EUR">715</cbc:TaxAmount>
+      </cac:TaxTotal>
+      <cac:LegalMonetaryTotal>
+          <cbc:TaxExclusiveAmount currencyID="EUR">5000.00</cbc:TaxExclusiveAmount>
+          <cbc:TaxInclusiveAmount currencyID="EUR">5700.00</cbc:TaxInclusiveAmount>
+          <cbc:PayableAmount currencyID="EUR">5700.00</cbc:PayableAmount>
+      </cac:LegalMonetaryTotal>
+    </CreditNote>
+  </test>
+	
+</testSet>

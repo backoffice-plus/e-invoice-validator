@@ -16,6 +16,9 @@ REPOSITORY_ROOT = TOOL_ROOT.parents[1]
 SCHEMA_ROOT = (
     REPOSITORY_ROOT / 'configuration/factur-x/1.09/Schema/factur-x-1.09'
 )
+CURRENT_SCHEMA_ROOT = (
+    REPOSITORY_ROOT / 'configuration/factur-x/1.09.2/Schema/factur-x-1.09.2'
+)
 RULE_ID_MAP = TOOL_ROOT / 'rule-id-map.json'
 EVENT_TAG = re.compile(r'<(?P<tag>assert|report)\b(?P<attributes>[^>]*)>')
 ALLOWED_CORRIGENDUM_OVERRIDES = {
@@ -39,6 +42,14 @@ PROFILES = (
     Profile('2_Factur-X_1.09_BASIC', 'Factur-X_1.09_BASIC.sch', 466, 379, 379),
     Profile('3_Factur-X_1.09_EN16931', 'Factur-X_1.09_EN16931.sch', 618, 424, 424),
     Profile('4_Factur-X_1.09_EXTENDED', 'Factur-X_1.09_EXTENDED.sch', 1458, 934, 937),
+)
+
+CURRENT_PROFILES = (
+    Profile('0_Factur-X_1.09.2_MINIMUM', 'FACTUR-X_MINIMUM.sch', 66, 55, 55),
+    Profile('1_Factur-X_1.09.2_BASICWL', 'FACTUR-X_BASIC-WL.sch', 337, 278, 278),
+    Profile('2_Factur-X_1.09.2_BASIC', 'FACTUR-X_BASIC.sch', 472, 385, 385),
+    Profile('3_Factur-X_1.09.2_EN16931', 'FACTUR-X_EN16931.sch', 627, 433, 433),
+    Profile('4_Factur-X_1.09.2_EXTENDED', 'FACTUR-X_EXTENDED.sch', 1464, 943, 943),
 )
 
 
@@ -149,7 +160,35 @@ def enrich_source(path: Path, events: list[ET.Element], desired_ids: list[str | 
     return changed
 
 
-def run(write: bool) -> int:
+def verify_current() -> int:
+    """The 1.09.2 release supplies its own stable IDs; preserve them verbatim."""
+    for profile in CURRENT_PROFILES:
+        events = schematron_events(
+            CURRENT_SCHEMA_ROOT / profile.directory / profile.schematron
+        )
+        if len(events) != profile.event_count:
+            raise ValueError(
+                f'{profile.directory}: expected {profile.event_count} assertions/reports, '
+                f'found {len(events)}'
+            )
+        assertions = [event for event in events if local_name(event.tag) == 'assert']
+        identified = sum(bool(event.get('id')) for event in assertions)
+        if len(assertions) != profile.identified_event_count or identified != len(assertions):
+            raise ValueError(
+                f'{profile.directory}: expected {profile.identified_event_count} '
+                f'identified assertions, found {identified} of {len(assertions)}'
+            )
+    print(
+        'Factur-X 1.09.2 upstream rule IDs verified: '
+        f'{sum(profile.identified_event_count for profile in CURRENT_PROFILES)} '
+        f'identified assertions across {len(CURRENT_PROFILES)} profiles.'
+    )
+    return 0
+
+
+def run(write: bool, version: str) -> int:
+    if version == '1.09.2':
+        return verify_current()
     rule_ids = load_rule_ids()
     changed = 0
     for profile in PROFILES:
@@ -179,13 +218,19 @@ def main() -> int:
         description='Restore and verify stable Factur-X report rule IDs.'
     )
     parser.add_argument(
+        '--version',
+        choices=('1.09', '1.09.2'),
+        default='1.09.2',
+        help='rule bundle to verify (default: 1.09.2)',
+    )
+    parser.add_argument(
         '--write',
         action='store_true',
-        help='add missing IDs to the pinned Schematron sources',
+        help='add missing IDs to the historical 1.09 Schematron sources',
     )
     arguments = parser.parse_args()
     try:
-        return run(arguments.write)
+        return run(arguments.write, arguments.version)
     except (ET.ParseError, OSError, ValueError, json.JSONDecodeError) as error:
         print(f'Factur-X rule ID check failed: {error}', file=sys.stderr)
         return 1

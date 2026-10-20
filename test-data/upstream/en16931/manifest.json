@@ -1,0 +1,28 @@
+{
+  "release": "validation-1.3.17",
+  "commit": "6e35e0ab8b09eb183f7d84b282e24ef95f9f5715",
+  "files": 279,
+  "cases": 1140,
+  "success_cases": 566,
+  "error_cases": 572,
+  "warning_cases": 2,
+  "sets": {
+    "test/Invoice-unit-UBL": {
+      "files": 206,
+      "cases": 915
+    },
+    "test/CreditNote-unit-UBL": {
+      "files": 71,
+      "cases": 216
+    },
+    "test/cii": {
+      "files": 2,
+      "cases": 9
+    }
+  },
+  "ubl_stylesheet": "configuration/xrechnung/3.0.2_2026-08-31/resources/en16931/1.3.17/EN16931-UBL-validation-EL-corrected.xslt",
+  "ubl_stylesheet_sha256": "f8e2e46cac791bfa9b3886528f21221161425e62148dc46a66c517aa64de72ee",
+  "ubl_upstream_stylesheet": "configuration/xrechnung/3.0.2_2026-08-31/resources/en16931/1.3.17/EN16931-UBL-validation.xslt",
+  "ubl_upstream_stylesheet_sha256": "fc4e6cfa8596bba0c2abd19038a98960c6ee9fc1f44566787c115efd4f4aca7c",
+  "cii_stylesheet": "test-data/upstream/en16931/1.3.17/cii/xslt/EN16931-CII-validation.xslt"
+}

@@ -1,0 +1,80 @@
+{
+  "mutations": {
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/cii-br-03-wrong-date-format.xml#cii-br-03-wrong-date-format-1-code-2016-04-04#cencii:BR-03#FAIL": {
+      "reason": "Known upstream discrepancy: CEN BR-03 accepts the hyphenated issue date that this future-target test expects to reject.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/cii-br-03-wrong-date-format.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/cii-br-co-15-negative-test.xml#cii-br-co-15-negative-test-5-code-314.86#cencii:BR-CO-15#FAIL": {
+      "reason": "Known upstream discrepancy: the CII BR-CO-15 rounding/total assertion does not reject the 314.86 mutation expected to fail by this upstream future-target case.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/cii-br-co-15-negative-test.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/cii-br-co-23-reason-codes.xml#cii-br-co-23-reason-codes-7-empty#cencii:BR-CO-23#FAIL": {
+      "reason": "Known upstream discrepancy: BR-CO-23 does not reject the empty allowance reason/code mutations expected to fail by this future-target test.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/cii-br-co-23-reason-codes.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/cii-br-co-23-reason-codes.xml#cii-br-co-23-reason-codes-10-empty#cencii:BR-CO-23#FAIL": {
+      "reason": "Known upstream discrepancy: BR-CO-23 does not reject the empty allowance reason/code mutations expected to fail by this future-target test.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/cii-br-co-23-reason-codes.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/cii-br-co-25.xml#cii-br-co-25-11-identity#cencii:BR-CO-25#PASS": {
+      "reason": "Obsolete upstream future-target expectation: BR-CO-25 is absent from the official bundled CEN 1.3.16 XSLT. XML-Mutate explicitly reports the missing rule; production rules are unchanged.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/cii-br-co-25.xml",
+      "failure_mode": "missing-rule"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/cii-br-co-25.xml#cii-br-co-25-12-empty#cencii:BR-CO-25#FAIL": {
+      "reason": "Obsolete upstream future-target expectation: BR-CO-25 is absent from the official bundled CEN 1.3.16 XSLT. XML-Mutate explicitly reports the missing rule; production rules are unchanged.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/cii-br-co-25.xml",
+      "failure_mode": "missing-rule"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/cii-sr-030-wrong-cardinality-bt-22.xml#cii-sr-030-wrong-cardinality-bt-22-14-remove#cencii:CII-SR-030#FAIL": {
+      "reason": "Known upstream discrepancy: removing BT-22 does not trigger CII-SR-030 as this upstream future-target test expects.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/cii-sr-030-wrong-cardinality-bt-22.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml#ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo-16-code-XK#cenubl:BR-CL-14#PASS": {
+      "reason": "Known upstream discrepancy: bundled CEN 1.3.16 code lists reject the Kosovo XK country/VAT prefixes that this upstream future-target case expects to pass.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml#ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo-20-code-XK#cenubl:BR-CL-14#PASS": {
+      "reason": "Known upstream discrepancy: bundled CEN 1.3.16 code lists reject the Kosovo XK country/VAT prefixes that this upstream future-target case expects to pass.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml#ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo-28-code-XK#cenubl:BR-CL-14#PASS": {
+      "reason": "Known upstream discrepancy: bundled CEN 1.3.16 code lists reject the Kosovo XK country/VAT prefixes that this upstream future-target case expects to pass.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml#ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo-18-code-XK-123456789#cenubl:BR-CO-09#PASS": {
+      "reason": "Known upstream discrepancy: bundled CEN 1.3.16 code lists reject the Kosovo XK country/VAT prefixes that this upstream future-target case expects to pass.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml#ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo-22-code-XK-123456789#cenubl:BR-CO-09#PASS": {
+      "reason": "Known upstream discrepancy: bundled CEN 1.3.16 code lists reject the Kosovo XK country/VAT prefixes that this upstream future-target case expects to pass.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml#ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo-24-code-XK#cenubl:BR-CL-14#PASS": {
+      "reason": "Known upstream discrepancy: bundled CEN 1.3.16 code lists reject the Kosovo XK country/VAT prefixes that this upstream future-target case expects to pass.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml#ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo-30-code-XK#cenubl:BR-CL-15#PASS": {
+      "reason": "Known upstream discrepancy: bundled CEN 1.3.16 code lists reject the Kosovo XK country/VAT prefixes that this upstream future-target case expects to pass.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml",
+      "failure_mode": "rule-expectation"
+    },
+    "known-upstream-issues/validator-configuration-xrechnung/2026-08-31/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml#ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo-26-code-XK-123456789#cenubl:BR-CO-09#PASS": {
+      "reason": "Known upstream discrepancy: bundled CEN 1.3.16 code lists reject the Kosovo XK country/VAT prefixes that this upstream future-target case expects to pass.",
+      "upstream": "https://github.com/itplr-kosit/validator-configuration-xrechnung/blob/b436fc4bf05ad501ab5cbb4a53fdffee3d4e18be/src/test/unexpected/ubl-br-cl-14-15-and-br-co-09-country-codes-kosovo.xml",
+      "failure_mode": "rule-expectation"
+    }
+  },
+  "report_assertions": {}
+}

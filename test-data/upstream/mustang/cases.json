@@ -1,0 +1,1201 @@
+{
+  "source": "Mustangproject, commit d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020 (Apache-2.0; upstream LICENSE, NOTICE and embedded fixture notices retained)",
+  "cases": [
+    {
+      "id": "mustang-mustang-cli-cii",
+      "file": "fixtures/Mustang-CLI/src/test/resources/cii.xml",
+      "sha256": "baa7b3201bc29fbe7bdc525f04d905cbe260a43869bab180826f48cec6a81fc8",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice snapshot with a supported EN16931/Factur-X/XRechnung guideline. Preserve its document structure and amounts as a positive fixture; no direct Java validation assertion for this filename was found. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/Mustang-CLI/src/test/resources/cii.xml",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-extended-fremdwaehrung",
+      "file": "fixtures/library/src/test/resources/Extended_fremdwaehrung.xml",
+      "sha256": "460a999957296363b445335d881cefab6f2544c629f316b649fc141cba9f11c7",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "rationale": "The upstream foreign-currency calculator/importer fixture uses TelephoneUniversalCommunication/URIID; the active profile XSD requires CompleteNumber there, so this unchanged historical fixture is a schema rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/CalculationTest.java#L152 (testLineCalculatorForeignCurrencyExample); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L90 (testProduct); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2PushTest.java#L1446 (testDifferentTaxCurrency)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-testxrechnung-invdss-012015776085",
+      "file": "fixtures/library/src/test/resources/TESTXRECHNUNG_INVDSS_012015776085.XML",
+      "sha256": "ac7b30e703bc978daad3cbb83a355c4716c3211326d25bbb858a879b787d0ccc",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testImportXRechnungPositionNote. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L884 (testImportXRechnungPositionNote)",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-xrechnung-betriebskostenabrechnung-ubl",
+      "file": "fixtures/library/src/test/resources/XRECHNUNG_Betriebskostenabrechnung.ubl.xml",
+      "sha256": "fe2adae9705746dabbd8196b1b857cc04e697074cb891ba4b8677dfbda0b4526",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/XRECHNUNG_Betriebskostenabrechnung.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-xrechnung-einfach-ubl",
+      "file": "fixtures/library/src/test/resources/XRECHNUNG_Einfach.ubl.xml",
+      "sha256": "a4c8accb349b9c934974142fe0857bd6f5b51d8b374dc0cc7ac6586ab06f1402",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/XRECHNUNG_Einfach.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-xrechnung-elektron-ubl",
+      "file": "fixtures/library/src/test/resources/XRECHNUNG_Elektron.ubl.xml",
+      "sha256": "845160bb74f71e6470b789c7b5bc79ec242d183e34451b23473f992073c2c980",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L229 (testDeserializedFiles)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-xrechnung-reisekostenabrechnung-ubl",
+      "file": "fixtures/library/src/test/resources/XRECHNUNG_Reisekostenabrechnung.ubl.xml",
+      "sha256": "557209369bf1d4a137e22973020795f55984f356d0c10c2879986c2e555fcdcc",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/XRECHNUNG_Reisekostenabrechnung.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-xrechnung-internalrecalcbug",
+      "file": "fixtures/library/src/test/resources/XRechnung_internalRecalcBug.xml",
+      "sha256": "037a0e3510d560ee9f254dec09166d027c38a30e34365a00edef5204292b8815",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R120"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R120"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testRecalc. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1074 (testRecalc); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L641 (testRecalc)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-library-cii-01-01a-invoice-cii",
+      "file": "fixtures/library/src/test/resources/cii/01.01a-INVOICE.cii.xml",
+      "sha256": "8a7e2585629400a691276587814e6588854af746be788797a976d4f805640087",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testPDFVisualizationCII. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L150 (testPDFVisualizationCII)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-library-cii-02-03a-invoice-uncefact",
+      "file": "fixtures/library/src/test/resources/cii/02.03a-INVOICE_uncefact.xml",
+      "sha256": "90b68137ebc32bdff0f9afe9a0fdfd7943325f60983efcaec213be5f5f64c748",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testImportXRechnungWithoutCalculationErrors. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L895 (testImportXRechnungWithoutCalculationErrors)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-library-cii-factur-x-basic",
+      "file": "fixtures/library/src/test/resources/cii/Factur-X_basic.xml",
+      "sha256": "b75c9744e76692d0d367c3832601685ac42b9e12d3c559d34c255b653168a5aa",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testImportExport. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L915 (testImportExport)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Basic"
+    },
+    {
+      "id": "mustang-library-cii-uc11-f202600022-extended-fx-cii-bt-x-589only-on-group-line",
+      "file": "fixtures/library/src/test/resources/cii/UC11_F202600022_EXTENDED_FX_CII_BT-X-589Only_on_GROUP_Line.xml",
+      "sha256": "edd459212a6869b3a6835e4f1d04683e940330de9eaa8ab1251858d721c120ba",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Upstream issue-275 regression has GROUP lines without quantity or price; explicit line totals 90.95 and 121.95 must drive grouped-line handling. The released EXTENDED invoice remains valid. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L975 (testIssue275GroupLineTotalsWithOnlyDueDateTypeCode)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-cii-bt17-response-1760553749128-cii",
+      "file": "fixtures/library/src/test/resources/cii/bt17-response_1760553749128.cii.xml",
+      "sha256": "41b841a5462a9436ed926fe444d7d8c2c2107b166af05d96110afe57906cb8f2",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L258 (testBT17InvoiceImport)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-cii-extended-warenrechnung-based-doublecashdiscount",
+      "file": "fixtures/library/src/test/resources/cii/extended_warenrechnung_based_doublecashdiscount.xml",
+      "sha256": "43e6e5dc42d833b47360332ff0de9e1759d922310ac821c0a6e8dadd16437ca7",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testSpecifiedLogisticsChargeCashDiscountImport. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L338 (testSpecifiedLogisticsChargeCashDiscountImport)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-cii-facturfrminimum",
+      "file": "fixtures/library/src/test/resources/cii/facturFrMinimum.xml",
+      "sha256": "784cb0e869e2b52bc6ee739c54f03fa83f91393b65e211714bca1503beda41b1",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The source declares MINIMUM/BASIC WL. These are intentionally excluded from this service because they are not complete EN16931 invoices; retain as a routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L714 (testImportMinimum)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-cii-lastschrift-iban-bug",
+      "file": "fixtures/library/src/test/resources/cii/lastschrift_iban_bug.xml",
+      "sha256": "f2462b6049bdf70c2b742ba650888af4943ab0acc9751299060ed3bd90f3985a",
+      "expected_status": 406,
+      "expected_codes": [
+        "CII-SR-465",
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [
+        "CII-SR-465"
+      ],
+      "rationale": "The upstream test checks creditor-reference/IBAN import, not validity. The source contains two seller-contact PersonName (BT-41) elements; CII-SR-465 allows only one, so the source is rejected. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L375 (testIBANImport)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-cii-minimaldebit",
+      "file": "fixtures/library/src/test/resources/cii/minimalDebit.xml",
+      "sha256": "8baee73c64881c896ea906b00c04f3f346b2c2728d05f2135fe78bff28693494",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testImportDebit. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L502 (testImportDebit)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-factur-x-extended",
+      "file": "fixtures/library/src/test/resources/factur-x-extended.xml",
+      "sha256": "a63bb55b739a5d23ba91cfcd4991c819df7e3058f12837c1da1d91c8ff757b50",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testCIIVisualizationExtended. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L57 (testCIIVisualizationExtended)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-factur-x",
+      "file": "fixtures/library/src/test/resources/factur-x.xml",
+      "sha256": "b2c843bfec9ddd6c94a7827247ea9deebbc7095429755c52df3c0c0dba55edbc",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testInvoiceLine, testFXExport, testUBLBasic, testCIIVisualizationBasic, testDetach. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L114 (testInvoiceLine); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/MustangReaderWriterTest.java#L453 (testFXExport); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/UBLTest.java#L69 (testUBLBasic); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L52 (testCIIVisualizationBasic); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L487 (testDetach)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-factur-x-invoicingperiod",
+      "file": "fixtures/library/src/test/resources/factur-x_invoicingPeriod.xml",
+      "sha256": "57e9bfe43b673203989975569121ac054a0d9fecc8316b56ca62956d947ce6d7",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testItemsBillingSpecifiedPeriod. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L861 (testItemsBillingSpecifiedPeriod)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-line-total-4-decimals",
+      "file": "fixtures/library/src/test/resources/line-total-4-decimals.xml",
+      "sha256": "487b49070ec86b052d537a5cff8a203c75574afeddd840f06fdabcb0fb0fb793",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "rationale": "The source is an importer/exporter input, not the generated invoice validated by testLineTotalAmount. Its TelephoneUniversalCommunication/URIID fails the active profile XSD before decimal business rules run. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2PushTest.java#L1481 (testLineTotalAmount)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-migration-reference-zugferd2-invoice-adjusted",
+      "file": "fixtures/library/src/test/resources/migration/reference/ZUGFeRD2-invoice-adjusted.xml",
+      "sha256": "d18a995504d1d1d9417aa8877915f8fd0f790074736a277de61c62a603ac106a",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.d"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.d"
+      ],
+      "rationale": "This historical ZUGFeRD 1-to-2 migration reference retains GermanBankleitzahlID in a financial-institution position that the active D22B EXTENDED schema no longer permits. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/migration/reference/ZUGFeRD2-invoice-adjusted.xml",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-migration-reference-zugferd2-invoice",
+      "file": "fixtures/library/src/test/resources/migration/reference/ZUGFeRD2-invoice.xml",
+      "sha256": "d0d8d4016e81e2023c233980bd3e9e2f8f61e2730c5f05459a3646a0b4a55f11",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.d"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.d"
+      ],
+      "rationale": "This historical ZUGFeRD 1-to-2 migration reference retains GermanBankleitzahlID in a financial-institution position that the active D22B EXTENDED schema no longer permits. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/migration/reference/ZUGFeRD2-invoice.xml",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-migration-reference-zugferd2-comfort-einfach",
+      "file": "fixtures/library/src/test/resources/migration/reference/ZUGFeRD2_COMFORT_Einfach.xml",
+      "sha256": "5582fef3a4aeb36472fd65de6c9acd17c6a5654ddb5386cb77950d062599b497",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "rationale": "This migration snapshot places ExchangedDocument/Name where the active Comfort profile schema requires TypeCode; conversion equivalence does not imply current-schema validity. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/migration/reference/ZUGFeRD2_COMFORT_Einfach.xml",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-migration-reference-zugferd2-extended-warenrechnung",
+      "file": "fixtures/library/src/test/resources/migration/reference/ZUGFeRD2_EXTENDED_Warenrechnung.xml",
+      "sha256": "4833cff35bfb5346d6a79729fd54e4aeac9ff9742634345a78943ee19b307793",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a",
+        "cvc-complex-type.2.4.b"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a",
+        "cvc-complex-type.2.4.b"
+      ],
+      "rationale": "The migration reference has incomplete AssociatedDocumentLineDocument elements without LineID and the obsolete capitalized data:Standard QualifiedDataType namespace. The current EXTENDED schema rejects it. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1221 (testApplicableProductCharacteristic)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-multiple-payment-means-cii",
+      "file": "fixtures/library/src/test/resources/multiple-payment-means.cii.xml",
+      "sha256": "98d67362b54673066545925211a3bec91c19f5ff9d164992b824dad77dbd2eb5",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testCIIVisualizationMultiplePaymentMeansBIC. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L62 (testCIIVisualizationMultiplePaymentMeansBIC)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-not-validating-full-invoice-based-ontest-eeisi-300-cenfullmodel-cii",
+      "file": "fixtures/library/src/test/resources/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.cii.xml",
+      "sha256": "e0144fd8c503df097f97cd4615dbc2160feac1f167270fce7ff60e7eec667a37",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "rationale": "Explicit nonvalidating full-model conversion fixture: out-of-profile AdditionalReferencedDocument and PayerSpecifiedDebtorFinancialInstitution elements violate the current CII profile schema. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L339 (testFull300Roundtrip)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-not-validating-full-invoice-based-ontest-eeisi-300-cenfullmodel-ubl",
+      "file": "fixtures/library/src/test/resources/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.ubl.xml",
+      "sha256": "7ddd1d12228a079fd1301adb996f8fae4efdea6fd5f77628178dd4779c45b157",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "rationale": "Explicit nonvalidating full-model conversion snapshot: a duplicate/out-of-sequence PayeeFinancialAccount violates the UBL payment-means XSD sequence. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.ubl.xml",
+      "expected_scenario": "EN16931 (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-subinvoicelines-extended-fallschutz-set-subinvoiceline-bsp5",
+      "file": "fixtures/library/src/test/resources/subinvoicelines/Extended_Fallschutz-Set_SubInvoiceLine_Bsp5.xml",
+      "sha256": "fb06881dd37710a186ebce6dedfc84fc755a5eb842e359314c2d131f73a60a9e",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testSubInvoiceLinesInformation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1046 (testSubInvoiceLinesInformation)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-subinvoicelines-extended-subinvoicelines-hardware-bsp2",
+      "file": "fixtures/library/src/test/resources/subinvoicelines/Extended_SubInvoiceLines_Hardware_Bsp2.xml",
+      "sha256": "a552c3f7b92583e0988cf805bac70167bdcfcea4f39c16306a0ccfdc9de1d6db",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testSubInvoiceLinesImport. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L936 (testSubInvoiceLinesImport)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-subinvoicelines-extended-subinvoicelines-buero-material-bsp3",
+      "file": "fixtures/library/src/test/resources/subinvoicelines/Extended___SubInvoiceLines_Buero_Material_Bsp3__.xml",
+      "sha256": "4a818498ddd5d44a492588e1e038c6f72a716afdc8d518433e387ac670de8a5b",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testSubInvoiceLinesWithDiscounts. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1029 (testSubInvoiceLinesWithDiscounts)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-subinvoicelines-extended-subinvoicelines-kaffee-bundle-set-bsp4",
+      "file": "fixtures/library/src/test/resources/subinvoicelines/Extended___SubInvoiceLines_Kaffee_Bundle_Set_Bsp4__.xml",
+      "sha256": "5801f2b85ef06b73b4c66211782e336c943dc3fc669ba2c160b0493cd5b16494",
+      "expected_status": 406,
+      "expected_codes": [
+        "BR-S-05"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "BR-S-05"
+      ],
+      "rationale": "The nested-line importer test does not assert validation. GROUP lines 1 and 1.3 carry standard-rated category S with rate 0.00; released BR-S-05 requires a positive standard VAT rate and rejects this unchanged fixture. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L999 (testSubInvoiceLinesNestedImport)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-subinvoicelines-zugferd-extended-abschlagsrechnung-subinvoiceline-u-lv-nr",
+      "file": "fixtures/library/src/test/resources/subinvoicelines/ZUGFeRD_Extended__Abschlagsrechnung_SubInvoiceLine_u_LV_Nr_.xml",
+      "sha256": "57e998377a1e0dcfbbe689bb4938583e4a1815cce36df580b35ae7c6a0b46217",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice snapshot with a supported EN16931/Factur-X/XRechnung guideline. Preserve its document structure and amounts as a positive fixture; no direct Java validation assertion for this filename was found. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/subinvoicelines/ZUGFeRD_Extended__Abschlagsrechnung_SubInvoiceLine_u_LV_Nr_.xml",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-subinvoicelines-invalidsubinvoicelinehierarchy",
+      "file": "fixtures/library/src/test/resources/subinvoicelines/invalidSubInvoiceLineHierarchy.xml",
+      "sha256": "6ed6324910a2279ea0fdd30eb7474f2057f8d366200468a753dfb35a35ed9503",
+      "expected_status": 406,
+      "expected_codes": [
+        "BR-FXEXT-08"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "BR-FXEXT-08"
+      ],
+      "rationale": "The fixture header deliberately changes a GROUP subtotal from 1050.00 to 999.00 while its DETAIL children remain 600.00 + 450.00. Upstream expects a warning; released Factur-X 1.09.2 BR-FXEXT-08 has error severity, so this service rejects it. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L575 (testSubInvoiceLineHierarchy)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-library-testcontractreferenceddocument",
+      "file": "fixtures/library/src/test/resources/testContractReferencedDocument.xml",
+      "sha256": "9b6e4f7ee63ac3d953d647d94b7bdcda339e67f9fd3f9e9d72aae347693749b9",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "rationale": "The upstream test checks contract-reference import. The fixture contains SellerOrderReferencedDocument within SpecifiedLineTradeAgreement, which the active Comfort profile schema does not allow. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1181 (testContractReferencedDocument)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-library-test-invoice-contract",
+      "file": "fixtures/library/src/test/resources/test_invoice_contract.xml",
+      "sha256": "3ab6ddef498b60d87c91dd18984cc615871b2bf16dcb229042975c80e8decd82",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testInvoiceContract. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1204 (testInvoiceContract)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-library-test-invoice-note",
+      "file": "fixtures/library/src/test/resources/test_invoice_note.xml",
+      "sha256": "40bbcf12cd849ed2cdb60a388e33612363a25231b449b4920c6ca45f19ca170c",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testInvoiceNotes. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1162 (testInvoiceNotes)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-library-testout-mustanggnuaccountingbeispielre-20171118-506fx-ubl",
+      "file": "fixtures/library/src/test/resources/testout-MustangGnuaccountingBeispielRE-20171118_506fx.ubl.xml",
+      "sha256": "6e2e72ac8e2170f177e04c920e1d60942b809736a77fa19d246c71480bed29e1",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/testout-MustangGnuaccountingBeispielRE-20171118_506fx.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-testout-xr-edge-ubl",
+      "file": "fixtures/library/src/test/resources/testout-XR-Edge.ubl.xml",
+      "sha256": "6c9e68b345e4129bf87925998683362534f07faea68f7dc797bb2cee94a2e50e",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/testout-XR-Edge.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-testout-zf2pushallowances-ubl",
+      "file": "fixtures/library/src/test/resources/testout-ZF2PushAllowances.ubl.xml",
+      "sha256": "fa3c369e20e5c0261ca97bf8432d8ceb22de717f4d22690b9c4e73f1f3856821",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/testout-ZF2PushAllowances.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-testout-zf2pushedge-ubl",
+      "file": "fixtures/library/src/test/resources/testout-ZF2PushEdge.ubl.xml",
+      "sha256": "6f7abd831a08a62c98a254b2aaa41d1bfe366e7dc458ee7ed2ad258f952d0bb9",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/testout-ZF2PushEdge.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-testout-zf2pushitemchargesallowances-ubl",
+      "file": "fixtures/library/src/test/resources/testout-ZF2PushItemChargesAllowances.ubl.xml",
+      "sha256": "46a52e229ac2c002ca41374c7c3d15ca027c2453012464d0d8b6f6de331d11b5",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/testout-ZF2PushItemChargesAllowances.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-testout-zf2new-ubl",
+      "file": "fixtures/library/src/test/resources/testout-ZF2new.ubl.xml",
+      "sha256": "41704f96cefbeae1eddbf4f6817eff7ff795c35fff9e346566c481467e2c3571",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L134 (testInvoiceImportUBL)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-testout-zf2newedge-ubl",
+      "file": "fixtures/library/src/test/resources/testout-ZF2newEdge.ubl.xml",
+      "sha256": "e249c912157b0ff009bcd437f52954470231381b28a9f23b42d3f455efb1d977",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/testout-ZF2newEdge.ubl.xml",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-ubl-conv-ubl-output-factur-x",
+      "file": "fixtures/library/src/test/resources/ubl-conv-ubl-output-factur-x.xml",
+      "sha256": "0c9ee988d392254aa6e69d529c59119aedddd76502225f6fec601b63bdceab3b",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/UBLTest.java#L71 (testUBLBasic)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-ubl-creditnote",
+      "file": "fixtures/library/src/test/resources/ubl-creditnote.xml",
+      "sha256": "7bf3071f094ff17f5b4fa4d751895e6c8b3d1033d0e76d52b6ac55f3af36ab43",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Generic UBL syntax example without CustomizationID. No EN16931/CreditNote scenario matches; retain as a routing rejection, not as a valid EN16931 invoice. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L94 (testUBLCreditNoteVisualizationBasic)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-ubl-selfbilled-01-20a-invoice-ubl",
+      "file": "fixtures/library/src/test/resources/ubl-selfbilled-01.20a-INVOICE_ubl.xml",
+      "sha256": "8459507eaedfa386ba17f5b8dba45d86e5097543abcb0bad6d6ad2e098fdfe82",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice snapshot with a supported EN16931/Factur-X/XRechnung guideline. Preserve its document structure and amounts as a positive fixture; no direct Java validation assertion for this filename was found. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/ubl-selfbilled-01.20a-INVOICE_ubl.xml",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-01-01a-invoice-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/01.01a-INVOICE.ubl.xml",
+      "sha256": "3558d8eee6499350f69c150b54b4019556458667cfc972beaa9bb7bf1e11303f",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testEdgeInvoiceImportUBL, testUBLVisualizationBasic. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/UBLTest.java#L118 (testEdgeInvoiceImportUBL); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L99 (testUBLVisualizationBasic)",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-04-01a-invoice-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/04.01a-INVOICE_ubl.xml",
+      "sha256": "37cf932716fa9ca988a49b06e766dcee99b32cda7ccf452f8a936a5465148e7c",
+      "expected_status": 200,
+      "expected_codes": [
+        "UBL-CR-190",
+        "UBL-CR-646"
+      ],
+      "expected_warning_codes": [
+        "UBL-CR-190",
+        "UBL-CR-646"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testEdgeInvoiceImportUBL2. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/UBLTest.java#L140 (testEdgeInvoiceImportUBL2)",
+      "expected_scenario": "EN16931 XRechnung Extension (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-bt-128-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/BT-128.ubl.xml",
+      "sha256": "9cd9181bc9e697daafd64f25a8939cd8bff43b475f5b6ba88355dbcffc868704",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L276 (testBT128InvoiceImport)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-ubl-ubl-creditnote-2-1-example-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/UBL-CreditNote-2.1-Example.ubl.xml",
+      "sha256": "c09ed4bfeac06e44937bafbfd852fdf1c267815acdbd16be619b6383ede803b7",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Generic UBL syntax example without CustomizationID. No EN16931/CreditNote scenario matches; retain as a routing rejection, not as a valid EN16931 invoice. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/VisualizationTest.java#L236 (testPDFVisualizationUBLCreditNote); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L731 (testImportUBLCreditnote)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-library-ubl-xrechnung-betriebskostenabrechnung-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_Betriebskostenabrechnung.ubl.xml",
+      "sha256": "c78fb20370f26fffc590e0be01bdb161e63dd6e7d8153fc26e964f631ce15a40",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice snapshot with a supported EN16931/Factur-X/XRechnung guideline. Preserve its document structure and amounts as a positive fixture; no direct Java validation assertion for this filename was found. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/ubl/XRECHNUNG_Betriebskostenabrechnung.ubl.xml",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-xrechnung-einfach-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_Einfach.ubl.xml",
+      "sha256": "221dbdc9d7a209881a5c27376b56e56e236182f06c11e085916b482bfe362408",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice snapshot with a supported EN16931/Factur-X/XRechnung guideline. Preserve its document structure and amounts as a positive fixture; no direct Java validation assertion for this filename was found. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/ubl/XRECHNUNG_Einfach.ubl.xml",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-xrechnung-elektron-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_Elektron.ubl.xml",
+      "sha256": "7cfac8386f8580a6379201d51b9f36d91a4c3d481c5321b6692a6973685d1008",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testDeserializedFiles. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/DeSerializationTest.java#L229 (testDeserializedFiles)",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-xrechnung-reisekostenabrechnung-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_Reisekostenabrechnung.ubl.xml",
+      "sha256": "9258a548962846e28a9ddd905835ab4903a8ef6dec5ee65cd6a8e15582df4894",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice snapshot with a supported EN16931/Factur-X/XRechnung guideline. Preserve its document structure and amounts as a positive fixture; no direct Java validation assertion for this filename was found. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/ubl/XRECHNUNG_Reisekostenabrechnung.ubl.xml",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-xrechnung-teilrechnung-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/XRECHNUNG_teilrechnung.ubl.xml",
+      "sha256": "d8ecf72a97439bdc39076af5488b4785d7152bb66a3e399b052e04b0a0bbb09a",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice snapshot with a supported EN16931/Factur-X/XRechnung guideline. Preserve its document structure and amounts as a positive fixture; no direct Java validation assertion for this filename was found. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/ubl/XRECHNUNG_teilrechnung.ubl.xml",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-not-validating-full-invoice-based-ontest-eeisi-300-cenfullmodel-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.ubl.xml",
+      "sha256": "6f490687f73fad17459c78c69cb2bd48cc9d69d3de44f400da6566d2ad410b7c",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "rationale": "Explicit nonvalidating full-model conversion snapshot: a duplicate/out-of-sequence PayeeFinancialAccount violates the UBL payment-means XSD sequence. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/ubl/not_validating_full_invoice_based_onTest_EeISI_300_CENfullmodel.ubl.xml",
+      "expected_scenario": "EN16931 (UBL Invoice)"
+    },
+    {
+      "id": "mustang-library-ubl-periods-ubl",
+      "file": "fixtures/library/src/test/resources/ubl/periods.ubl.xml",
+      "sha256": "f93f93e44146e48fa3f42ae4cc7a1eedaeb333c4181f05dd7f64e9253bed814c",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L750 (testImportUBLPeriods)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-validator-01-01a-invoice-ubl",
+      "file": "fixtures/validator/src/test/resources/01.01a-INVOICE_ubl.xml",
+      "sha256": "0f5439b43c1dcb487fc7b800deb3cde074ed701181acc36bdd27937250eb82e5",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testXRValidationUBL. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L412 (testXRValidationUBL)",
+      "expected_scenario": "EN16931 XRechnung (UBL Invoice)"
+    },
+    {
+      "id": "mustang-validator-01-01a-invoice-uncefact",
+      "file": "fixtures/validator/src/test/resources/01.01a-INVOICE_uncefact.xml",
+      "sha256": "70c871f78abaf8362ee0f6907d105bfa1e8e2af9e0972856200d3e433737498b",
+      "expected_status": 200,
+      "expected_codes": [
+        "CII-SR-351"
+      ],
+      "expected_warning_codes": [
+        "CII-SR-351"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Upstream testXRValidationUNCEFACT documents different results with profile-XSD validation enabled/disabled. The active KoSIT XRechnung scenario accepts its full CII syntax and emits warning CII-SR-351 because InvoiceeTradeParty is present. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L432 (testXRValidationUNCEFACT)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-cii-xrechnung-with-peppol-violation",
+      "file": "fixtures/validator/src/test/resources/CII_XRechnung_with_Peppol_violation.xml",
+      "sha256": "53f03f48d1f24931d4c0ff312e19247ce63274f4ae088f58af7aa93d5493e74f",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Upstream testXRCIIPeppolFailureValidation requires acceptance despite a Peppol recommendation. Validate it through the active XRechnung CII scenario; current rule revisions may remove the older warning. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L235 (testXRCIIPeppolFailureValidation)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-en16931-einfach-ubl",
+      "file": "fixtures/validator/src/test/resources/EN16931_Einfach.ubl.xml",
+      "sha256": "bc3b025720c6007114a4f67da35dad39f2d3de8890ed79e130ccef0d9c2cb727",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The UBL source declares a Peppol or Factur-X customization instead of a supported XRechnung identifier or exact urn:cen.eu:en16931:2017. This service does not activate a Peppol UBL configuration; retain this unchanged conversion/import snapshot as a no-scenario routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L501 (testUBLValidation)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-validator-fail-zugferd-2p1-minimum-rechnung-380",
+      "file": "fixtures/validator/src/test/resources/FAIL_zugferd_2p1_MINIMUM_Rechnung_380.xml",
+      "sha256": "9298fedd1508b39e1a3ad61890ebfae6e9887b3e4b1904392b193543bdf45504",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The source declares MINIMUM/BASIC WL. These are intentionally excluded from this service because they are not complete EN16931 invoices; retain as a routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L95 (testZF2XMLValidation)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-validator-uc10-f202600004-extended-fx-cii-commentee",
+      "file": "fixtures/validator/src/test/resources/UC10_F202600004_EXTENDED_FX_CII_Commentee.xml",
+      "sha256": "2a2040b92347625a829504dee1cc51da92bbf0280439457317f59ea013d87009",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice snapshot with a supported EN16931/Factur-X/XRechnung guideline. Preserve its document structure and amounts as a positive fixture; no direct Java validation assertion for this filename was found. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/resources/UC10_F202600004_EXTENDED_FX_CII_Commentee.xml",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-validator-x03-01-abschlagsrechnung-subinvoiceline-u-lv-nr",
+      "file": "fixtures/validator/src/test/resources/X03_01_Abschlagsrechnung_SubInvoiceLine_u_LV_Nr.xml",
+      "sha256": "28ff0711c3163193b56b427be6b1fe1d41aa5e6f4a90996fd7b596d749aeeb57",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Upstream testSubInvoiceLineHierarchy expects no warnings for this complete advance-payment/sub-invoice-line example. The current released EXTENDED rules accept it. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L591 (testSubInvoiceLineHierarchy)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-validator-xrechnung-internalrecalcbug",
+      "file": "fixtures/validator/src/test/resources/XRechnung_internalRecalcBug.xml",
+      "sha256": "037a0e3510d560ee9f254dec09166d027c38a30e34365a00edef5204292b8815",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R120"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R120"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testRecalc. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/java/org/mustangproject/ZUGFeRD/ZF2ZInvoiceImporterTest.java#L1074 (testRecalc); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L641 (testRecalc)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-zugferd-invoice-rabatte-3-abschlag-duepayableamount",
+      "file": "fixtures/validator/src/test/resources/ZUGFeRD-invoice_rabatte_3_abschlag_duepayableamount.xml",
+      "sha256": "03b3514916660177130de8fda824d841fd158ffa37e17f970e18c1d2ae8526d1",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testZF2XMLValidation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L144 (testZF2XMLValidation)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-validator-zugferd-invoice-rabatte-4-abschlag-taxbasistotalamount",
+      "file": "fixtures/validator/src/test/resources/ZUGFeRD-invoice_rabatte_4_abschlag_taxbasistotalamount.xml",
+      "sha256": "10c4a1b72e02bde04d0c6cb00cf185ad42ec891665d4c1e71f1ce07dde9d6f01",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testZF2XMLValidation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L164 (testZF2XMLValidation)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-validator-attributebasedxmp-zugferd-2p0-en16931-einfach-corrected",
+      "file": "fixtures/validator/src/test/resources/attributeBasedXMP_zugferd_2p0_EN16931_Einfach_corrected.xml",
+      "sha256": "0d93fa381481688217fe751ad0ab1a6af7a372bd8408a7669a532fe52dc8daa1",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testZF2XMLValidation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L170 (testZF2XMLValidation)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-validator-invalidarithmetics",
+      "file": "fixtures/validator/src/test/resources/invalidArithmetics.xml",
+      "sha256": "051a75340f4a651f9da42319ff86a3e04a2308c34a0c47bbbd60e821a906b9b2",
+      "expected_status": 200,
+      "expected_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [],
+      "rationale": "Upstream testArithmetics explicitly asserts valid with warnings. The current rules also accept this source; require the empty-element warning PEPPOL-EN16931-R008, without freezing an obsolete upstream warning count. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L357 (testArithmetics)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)"
+    },
+    {
+      "id": "mustang-validator-invalidsubinvoicelinehierarchy",
+      "file": "fixtures/validator/src/test/resources/invalidSubInvoiceLineHierarchy.xml",
+      "sha256": "6ed6324910a2279ea0fdd30eb7474f2057f8d366200468a753dfb35a35ed9503",
+      "expected_status": 406,
+      "expected_codes": [
+        "BR-FXEXT-08"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "BR-FXEXT-08"
+      ],
+      "rationale": "The fixture header deliberately changes a GROUP subtotal from 1050.00 to 999.00 while its DETAIL children remain 600.00 + 450.00. Upstream expects a warning; released Factur-X 1.09.2 BR-FXEXT-08 has error severity, so this service rejects it. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L575 (testSubInvoiceLineHierarchy)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-validator-invalidv2",
+      "file": "fixtures/validator/src/test/resources/invalidV2.xml",
+      "sha256": "9433726cdb907442712615e7305fa9b6260e4c617b59fbcae8da54fc68e0b2fa",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Upstream invalid fixture uses malformed urn:cen.eu:en16931:2017:compliant:factur-x.eu:1p0:extended. It matches no explicit Factur-X profile and is excluded from generic CII by factur-x.eu. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L38 (testZF2XMLValidation)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-validator-invalidv2profile",
+      "file": "fixtures/validator/src/test/resources/invalidV2Profile.xml",
+      "sha256": "ae8d7528ea13840a0a8c8403869e20ac8594bdbaba18320c7efc54ed3346d460",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Upstream testZF2XMLValidation expects profile error type 25. The CII100 document declares the old ZUGFeRD 1.0 comfort identifier, so no active modern-CII scenario matches. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L81 (testZF2XMLValidation)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-validator-invalidxrschemav2",
+      "file": "fixtures/validator/src/test/resources/invalidXRSchemav2.xml",
+      "sha256": "9525dc8dfaa42f0950a7915602c026a37cefccded7f2792046f595ea720d6de9",
+      "expected_status": 406,
+      "expected_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "cvc-complex-type.2.4.a"
+      ],
+      "rationale": "Upstream testXRSchemaValidation explicitly requires invalid. ExchangedDocument/IncludedNote occurs before required IssueDateTime in this supported historical XRechnung 2.0 schema. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L336 (testXRSchemaValidation)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-invalidxrv30",
+      "file": "fixtures/validator/src/test/resources/invalidXRV30.xml",
+      "sha256": "c4b71c2027daa0261501c411e9665134ebf75564e02900d1d47d07ad73b07bcf",
+      "expected_status": 406,
+      "expected_codes": [
+        "BR-CO-16",
+        "BR-DE-15",
+        "PEPPOL-EN16931-R001",
+        "PEPPOL-EN16931-R020"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "BR-CO-16",
+        "BR-DE-15",
+        "PEPPOL-EN16931-R001",
+        "PEPPOL-EN16931-R020"
+      ],
+      "rationale": "Upstream testXR30Validation and reused-validator tests require invalid. The source violates amount-due arithmetic BR-CO-16 and omits business process, seller electronic address and buyer reference. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L826 (testCIIAfterUBLWithClearedContext); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L223 (testXR30Validation)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-invalidxrv30-br-dec-23",
+      "file": "fixtures/validator/src/test/resources/invalidXRV30_BR-DEC-23.xml",
+      "sha256": "cc286cd46314fefea2faa66cf736253c036bbfbf3a4c6056b4cba5fb43e20ca9",
+      "expected_status": 406,
+      "expected_codes": [
+        "BR-DE-2",
+        "BR-DEC-23"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "BR-DE-2",
+        "BR-DEC-23"
+      ],
+      "rationale": "Upstream testBRDEC23Regression explicitly requires invalid and BR-DEC-23: line net amount has more than two decimals. The source also lacks mandatory seller contact BG-6 (BR-DE-2). Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L545 (testBRDEC23Regression)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-invalidxrv2",
+      "file": "fixtures/validator/src/test/resources/invalidXRv2.xml",
+      "sha256": "3beab2b1ae945860c86a3c1f1e1e10c6f846fd4da8097e3ee524cdbcf860fd69",
+      "expected_status": 406,
+      "expected_codes": [
+        "BR-DE-2"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "BR-DE-2"
+      ],
+      "rationale": "Upstream testXRValidation explicitly requires invalid. This supported historical XRechnung 2.0 source lacks mandatory seller contact BG-6 (BR-DE-2). Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L274 (testXRValidation)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-roundingdifferenceisintolerance",
+      "file": "fixtures/validator/src/test/resources/roundingDifferenceIsInTolerance.xml",
+      "sha256": "1dcd7d3a9ddb00b99817bea5304b4f8ec369b6df8ff825f96b40281082d9e80a",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Upstream testRoundingDifferenceIsInTolerance explicitly asserts valid. Preserve acceptance of monetary rounding within the profile tolerance; the current corrected release need not emit the historical warning. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L612 (testRoundingDifferenceIsInTolerance); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L379 (testSchematronExceptionIsInvalid)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended"
+    },
+    {
+      "id": "mustang-validator-ubl-tc434-creditnote1",
+      "file": "fixtures/validator/src/test/resources/ubl-tc434-creditnote1.xml",
+      "sha256": "911d7ac2cb4fa72d21331c76914468e7d94eda03629e0def75c64ab18e3e9dce",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testUBLValidation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L516 (testUBLValidation)",
+      "expected_scenario": "EN16931 (UBL CreditNote)"
+    },
+    {
+      "id": "mustang-validator-validv2",
+      "file": "fixtures/validator/src/test/resources/validV2.xml",
+      "sha256": "2520a5b20565fabd9deaf313bda093921dc111033016a2a85c0f78a4f68c05d6",
+      "expected_status": 406,
+      "expected_codes": [
+        "FX-SCH-R-9a797ec0db8282dabeab",
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [
+        "FX-SCH-R-9a797ec0db8282dabeab"
+      ],
+      "rationale": "The historical upstream valid fixture has AdditionalReferencedDocument/TypeCode outside 916, 50 and 130. The current EN16931 profile explicitly prohibits that element variant; expect a normal business-rule rejection, preserving its empty-element warnings. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ValidationReportSchemaTest.java#L32 (loadSchema); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L253 (testXMLValidation) Rule source: configuration/factur-x/1.09.2/Schema/factur-x-1.09.2/3_Factur-X_1.09.2_EN16931/FACTUR-X_EN16931.sch, rule context /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[not(ram:TypeCode=\"916\") and not(ram:TypeCode=\"50\") and not(ram:TypeCode=\"130\")], report test true(). Generated metadata ID FX-SCH-R-9a797ec0db8282dabeab identifies this prohibited document-reference variant.",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)",
+      "forbidden_codes": [
+        "UNSPECIFIC"
+      ]
+    },
+    {
+      "id": "mustang-validator-validv2basic",
+      "file": "fixtures/validator/src/test/resources/validV2Basic.xml",
+      "sha256": "53d990e38f07a28c49c8e7f8a691db7add4233c4ade92b945876796f5e2792a7",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testZF2XMLValidation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L134 (testZF2XMLValidation)",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Basic"
+    },
+    {
+      "id": "mustang-validator-validv2fr",
+      "file": "fixtures/validator/src/test/resources/validV2FR.xml",
+      "sha256": "da390d45476986859980c5623280c8255d37aa4d383fda99292340d0c2b7604e",
+      "expected_status": 406,
+      "expected_codes": [
+        "FX-SCH-A-000556"
+      ],
+      "expected_warning_codes": [],
+      "expected_error_codes": [
+        "FX-SCH-A-000556"
+      ],
+      "rationale": "Upstream validates an additional French CTC extension. This service generic CII fallback applies the released EN16931 profile, whose guideline-ID codelist excludes urn.cpro.gouv.fr:1p0:extended-ctc-fr (FX-SCH-A-000556). Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L469 (testFrenchSchematronValidation); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L278 (testXMLFRValidation)",
+      "expected_scenario": "ZUGFeRD/Factur-X - EN16931 (CII) Generic"
+    },
+    {
+      "id": "mustang-validator-validxrv23",
+      "file": "fixtures/validator/src/test/resources/validXRV23.xml",
+      "sha256": "3ea06614b7d26325231abe1832b3b81541462b41eef1ee52d12815abe8985c55",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testXR23Validation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L179 (testXR23Validation)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-validxrv30",
+      "file": "fixtures/validator/src/test/resources/validXRV30.xml",
+      "sha256": "bb8b84490f70bfdad52063dbef2f726fe3d7352835656a3e9855698ca3ecb978",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testXR30Validation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L205 (testXR30Validation)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-validxrv2",
+      "file": "fixtures/validator/src/test/resources/validXRv2.xml",
+      "sha256": "13093d875a2997c8f88838b57d1bf531d8bc288749ea1e8bdbe9df5c6ad17358",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testXRValidation. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L265 (testXRValidation)",
+      "expected_scenario": "EN16931 XRechnung (CII)"
+    },
+    {
+      "id": "mustang-validator-validzretestzugferd",
+      "file": "fixtures/validator/src/test/resources/validZREtestZugferd.xml",
+      "sha256": "c5a7d53dce25256d4bbbeb5defb1f23e7103cbed04421ed03588c5476d4b7433",
+      "expected_status": 406,
+      "expected_codes": [
+        "BR-CO-25",
+        "BR-CO-26",
+        "FX-SCH-R-58bbd175c958b4d6ae80",
+        "FX-SCH-R-98dc4a1efb39a21ab991",
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [
+        "BR-CO-25",
+        "BR-CO-26",
+        "FX-SCH-R-58bbd175c958b4d6ae80",
+        "FX-SCH-R-98dc4a1efb39a21ab991"
+      ],
+      "rationale": "Upstream testZF2XMLValidation already asserts invalid. Seller identifiers are absent (BR-CO-26), positive amount due lacks due date/payment terms (BR-CO-25), and currencyID attributes occur where the EXTENDED profile prohibits them. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L176 (testZF2XMLValidation) Rule source: configuration/factur-x/1.09.2/Schema/factur-x-1.09.2/4_Factur-X_1.09.2_EXTENDED/FACTUR-X_EXTENDED.sch, contexts /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxBasisTotalAmount and ram:GrandTotalAmount, each with report test @currencyID. Require both context-specific generated report IDs, in addition to BR-CO-25 and BR-CO-26.",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - EN16931 (CII) Extended",
+      "forbidden_codes": [
+        "UNSPECIFIC"
+      ]
+    },
+    {
+      "id": "mustang-validator-valid-avoir-fr-type380-minimum-factur-x",
+      "file": "fixtures/validator/src/test/resources/valid_Avoir_FR_type380_minimum_factur-x.xml",
+      "sha256": "294c779ade6bb304ccbc76150c37e52f63eb17b7669b7253d4812fddd026bde6",
+      "expected_status": 406,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "The source declares MINIMUM/BASIC WL. These are intentionally excluded from this service because they are not complete EN16931 invoices; retain as a routing rejection. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L150 (testZF2XMLValidation)",
+      "expected_no_scenario": true
+    },
+    {
+      "id": "mustang-validator-valid-with-vat-o",
+      "file": "fixtures/validator/src/test/resources/valid_with_VAT_O.xml",
+      "sha256": "75d612f96bc53b6375712f2b8b45b9aa791e6246b8e20fdbdb33aedcb58788ba",
+      "expected_status": 406,
+      "expected_codes": [
+        "BR-CO-26",
+        "FX-SCH-R-52795c47d319561963d3",
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_warning_codes": [
+        "PEPPOL-EN16931-R008"
+      ],
+      "expected_error_codes": [
+        "BR-CO-26",
+        "FX-SCH-R-52795c47d319561963d3"
+      ],
+      "rationale": "Upstream testVAT_O explicitly asserts invalid despite the filename. Seller identifiers are absent (BR-CO-26), and the current profile prohibits this ExemptionReason element in its context. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L662 (testVAT_O); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L303 (testVAT_O) Rule source: configuration/factur-x/1.09.2/Schema/factur-x-1.09.2/3_Factur-X_1.09.2_EN16931/FACTUR-X_EN16931.sch, rule context /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:ExemptionReason, report test true(). Generated metadata ID FX-SCH-R-52795c47d319561963d3 identifies the prohibited line-level exemption reason.",
+      "expected_scenario": "ZUGFeRD 2.5.2/Factur-X 1.09.2 - Comfort (EN16931)",
+      "forbidden_codes": [
+        "UNSPECIFIC"
+      ]
+    },
+    {
+      "id": "mustang-validator-xrechnung-ubl",
+      "file": "fixtures/validator/src/test/resources/xrechnung-ubl.xml",
+      "sha256": "bdf71868db7892512f31c817ec92f58e7b08fbf62a32f14fd6992395971842ba",
+      "expected_status": 200,
+      "expected_codes": [],
+      "expected_warning_codes": [],
+      "expected_error_codes": [],
+      "rationale": "Complete upstream invoice used by testCIIAfterUBLWithClearedContext, testReusedValidatorAfterUBL. Preserve its supported profile, monetary amounts, references and line structure as a positive regression; importer/visualization usage is not treated as an upstream validation assertion. Upstream: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/XMLValidatorTest.java#L836 (testCIIAfterUBLWithClearedContext); https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/java/org/mustangproject/validator/ZUGFeRDValidatorTest.java#L318 (testReusedValidatorAfterUBL)",
+      "expected_scenario": "EN16931 (UBL Invoice)"
+    }
+  ],
+  "exclusions": [
+    {
+      "file": "fixtures/library/src/test/resources/migration/input/ZUGFeRD1-invoice-adjusted.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/migration/input/ZUGFeRD1-invoice-adjusted.xml"
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/input/ZUGFeRD1-invoice.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/migration/input/ZUGFeRD1-invoice.xml"
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/input/ZUGFeRD1_COMFORT_Einfach.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/migration/input/ZUGFeRD1_COMFORT_Einfach.xml"
+    },
+    {
+      "file": "fixtures/library/src/test/resources/migration/input/ZUGFeRD1_EXTENDED_Warenrechnung.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/library/src/test/resources/migration/input/ZUGFeRD1_EXTENDED_Warenrechnung.xml"
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV1.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/resources/invalidV1.xml"
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV1ExtraTags.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/resources/invalidV1ExtraTags.xml"
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV1TooMinimal.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/resources/invalidV1TooMinimal.xml"
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/invalidV1addition.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/resources/invalidV1addition.xml"
+    },
+    {
+      "file": "fixtures/validator/src/test/resources/validV1.xml",
+      "reason": "Legacy ZUGFeRD 1.0 CrossIndustryDocument syntax is outside the active service configuration; retained byte-for-byte for provenance and explicitly not executed. Source: https://github.com/ZUGFeRD/mustangproject/blob/d3d51fd01a6a9c1fa4401bc8c08049e3dd0d7020/validator/src/test/resources/validV1.xml"
+    }
+  ],
+  "coverage": {
+    "root": "fixtures",
+    "files": 98,
+    "cases": 89,
+    "exclusions": 9
+  }
+}

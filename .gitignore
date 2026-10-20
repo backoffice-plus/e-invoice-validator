@@ -1,2 +1,5 @@
 .idea/
 tools/factur-x-xslt/target/
+tools/regression-tests/target/
+tools/regression-tests/**/target/
+__pycache__/

@@ -100,10 +100,7 @@
                 </ram:URIUniversalCommunication>
                 <ram:SpecifiedTaxRegistration>
                     <ram:ID schemeID="VA">DE152138634</ram:ID>
-                </ram:SpecifiedTaxRegistration>
-                <ram:SpecifiedTaxRegistration>
-                    <ram:ID schemeID="FC">04523249415</ram:ID>
-                </ram:SpecifiedTaxRegistration>
+                </ram:SpecifiedTaxRegistration>                
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery>
@@ -119,7 +116,7 @@
                 <ram:TypeCode>58</ram:TypeCode>
                 <ram:Information>Rechnung</ram:Information>
                 <ram:PayeePartyCreditorFinancialAccount>
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE79000000001234567890</ram:IBANID>
                     <ram:AccountName>Mustermann GmbH</ram:AccountName>
                 </ram:PayeePartyCreditorFinancialAccount>
                 <ram:PayeeSpecifiedCreditorFinancialInstitution>

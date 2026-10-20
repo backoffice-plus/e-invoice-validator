@@ -37,8 +37,8 @@ The following acceptance-policy changes are intentional and live in `scenarios.x
 
 - MINIMUM and BASIC WL remain technically recognizable Factur-X profiles, but do not match this service because they are not complete EN 16931 invoices.
 - The generic CII fallback excludes every identifier containing `kosit`, covering both historical `xoev-de:kosit` and current `xeinkauf.de:kosit` XRechnung identifiers.
-- Historical Factur-X 1.07.2 assets remain in the repository for regression work, but the production container activates only this 1.09 bundle.
+- Historical Factur-X 1.07.2 and this 1.09 bundle remain in the repository for regression work. The production container now activates the 1.09.2 bundle.
 
 ## Reproduction
 
-Run `scripts/regenerate-factur-x-xslt.sh --check` from the repository root. Omitting `--check` regenerates and installs the five validators from the pinned `.sch` files.
+Run `scripts/regenerate-factur-x-xslt.sh --version 1.09 --check` from the repository root. Omitting `--check` regenerates and installs the five validators from the pinned `.sch` files with compiler 9.0.1. Without `--version 1.09`, the script reproduces the current 1.09.2 bundle instead.
